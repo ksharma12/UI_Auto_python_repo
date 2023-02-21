@@ -1,0 +1,10 @@
+User Navigated to https://www.way2automation.com/
+Window full screened successfully
+Implicit wait set to 15
+None
+<selenium.webdriver.remote.webelement.WebElement (session="47ae98aa2a4029914aefadc906b48578", element="1d5b1e4e-f0e5-4f8d-8f8c-50cd1bbd3045")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="47ae98aa2a4029914aefadc906b48578", element="1d5b1e4e-f0e5-4f8d-8f8c-50cd1bbd3045")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="47ae98aa2a4029914aefadc906b48578", element="1d5b1e4e-f0e5-4f8d-8f8c-50cd1bbd3045")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="47ae98aa2a4029914aefadc906b48578", element="1d5b1e4e-f0e5-4f8d-8f8c-50cd1bbd3045")> moved to element
+None
+all windows closed successfully

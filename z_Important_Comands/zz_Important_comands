@@ -1,0 +1,181 @@
+pip install -U selenium  ---> update selenium
+
+pip install --upgrade pip -----> update pip
+
+Which python3 ------> which version of python installed
+
+Python3 ------> shifting to python interpreter
+
+softwareupdate --install-rosetta ------> Cause: error=86, Bad CPU type in executable error message.
+
+Ctrl + options/alt + i ------> auto indentation in pycharm
+
+Ctrl + options/alt + o ------> optimize imports
+
+chrome://version/ ---------> type in chrome address bar (for chrome profile data)
+
+pycharm_icon -> preferences -> current_project -> python_interpreter -> (+)sign ->
+
+pytest -> install
+
+python -m pip check-----------------> check for missing dependencies
+pip freeze > requirements.txt ------------> pip freeze outputs a list of all installed Python modules with their versions.
+pip install -r requirements.txt -----------> This installs all of the modules listed in our Python requirements file into our project environment.
+pip uninstall -r requirements.txt -----------> This uninstalls all of the modules listed in our Python requirements file into our project environment.
+pip install -U -r requirements.txt ---------> This upgrade all of the modules listed in our Python requirements file into our project environment.
+command + shift + f ---------------> search whole project for search "string"
+pip list --outdated -------------> Step 1: Output a list of outdated packages
+pip install -U PackageName-------->  Step 2: Upgrade the required package
+pip install pipreqs --------------> it is a good practice to use the pipreqs module. It is used to scan your imports and build a Python requirements file for you.
+command + ~  ---------------------> clear terminal
+
+
+move parent directory : cd ..
+
+move child directory : cd name
+
+# . represents current directory in which we are working
+filename="./Logs/logfile.log"
+filepath="../testData/Test_Data.xlsx"
+
+shadow element eg ---> url = "https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit"
+
+selenium grid is for Remote execution of test cases not parallel execution although parallel execution
+is possible via selenium grid
+
+- distribute testcases on remote machine
+- selenium hub file download from : https://www.selenium.dev/documentation/grid/
+
+1. check if java configured on your machine :
+  - java -version
+
+2. How to download java on your machine :
+  -
+
+----------------------------------------PyTest---------------------------------------------------------------
+To add any package to current project :
+    preferences -> current_project -> python_interpreter -> (+)sign -> package_name
+
+pycharm_icon -> preferences -> current_project -> python_interpreter -> (+)sign -> pytest -> install
+
+mandatory_rule for pytest:->
+1. In pytest framework always make python file as (test_......)
+2. function name will always start from (test_.....)
+
+how to execute test cases in pytest:
+ ->pytest cmnd execute all files in pytest project named test_....
+1. make terminal point to pytest project via cd (pytest_Dir) -> [pytest]
+2. run specific file in terminal: [pytest fileName.py]
+3. if need to run test in console then in terminal: [pytest fileName.py -s]
+4. if need to run test in console with all verbose(info) then in terminal: [pytest fileName.py -s -v]
+   ex: fileName.py::testCase1 (print_item)
+       PASSED
+       fileName.py::testCase2 (print_item)
+       PASSED
+5. if run single test in a file: [pytest fileName.py -s -v -k testName(remove test_)] # test_testName
+6. if run all test in a file except 1 testName:
+   [pytest fileName.py -s -v -k "not testName"(remove test_)] # test_testName
+7. Creating a test_runner:
+   editconfigurations -> (+)button -> pytest ->
+     scriptpath -> /pytest_directory
+     workingDirectory -> /pytest_directory
+   option [pytest in pytest_directory] , click on play button
+
+   preferences -> tools -> python Integrated tools -> testing -> defaultTestRunner
+
+8. Creating test fixtures: in [test_fileName.py] -> function-level and module-level
+   function-level:---->
+   predefined Name:  def setup_function(function) # execute before every test
+   predefined Name:  def teardown_function(function) # execute after every test
+
+   module-level:---->
+   predefined Name:  def setup_module(module) # execute before every test
+   predefined Name:  def teardown_module(module) # execute after every test
+
+9. User defined markers run particular marker tests (grouping testcases)
+   [pytest fileName.py -s -v -m marker_name]
+   [pytest fileName.py -s -v -m "not marker_name"]
+
+   Register markers for No warnings:
+   project_dir -> create .ini file -> paste markers
+
+10. function stopped execution once assertion failed
+   -to continue with function execution use soft_assertion
+    [pip install pytest-soft-assertions]
+   -run test via this command:
+    [pytest fileName.py -s -v --soft-asserts]
+
+11. test_1 , test_2 , test_3(data_set_1) , test_3(data_set_2) , test_4(data_set_3) => total [5] tests would run
+
+12. For parallel test execution
+    https://pypi.org/project/pytest-xdist/
+    pip install pytest-xdist
+    [pytest -n auto] # With this call, pytest will spawn a number of workers processes equal to the
+                       number of available CPUs, and distribute the tests randomly across them.
+
+    execution command: [pytest -n auto]    # run all tests in all files in framework parallely
+                       [pytest -s -v -n auto]
+
+                       [pytest fileName.py -n auto ]  # run all tests in named file parallely
+                       [pytest fileName.py -s -v -n auto ]
+
+                       [pytest fileName.py -n i] # (i=integer)
+                       [pytest fileName.py -s -v -n 3]
+
+    configure: in pytest.ini file
+               addopts = -ni(i=integer)
+                         -n auto
+
+13. For Html reports generation
+    https://pypi.org/project/pytest-html/
+    pip install pytest-html
+
+    [pytest --html=test_reports.html]
+    [pytest -s -v --html=test_reports.html]
+    [pytest --html="./folder_name/test_reports.html"]
+    [pytest -s -v --html="./folder_name/test_reports.html"]
+
+    [pytest fileName.py --html=test_reports.html]
+    [pytest fileName.py -s -v --html=test_reports.html]
+    [pytest fileName.py --html="./folder_name/test_reports.html"]
+    [pytest fileName.py -s -v --html="./folder_name/test_reports.html"]
+
+14. For allure reports
+    {configure allure report globally}
+    download allure command-line : https://docs.qameta.io/allure/
+    move to option: Installing a commandline
+    type: allure in terminal for info
+
+    install allure package in project :
+     - preferences -> current_project -> python_interpreter -> (+)sign -> allure-pytest
+
+    Steps to generate allure report:->
+     - [pytest --alluredir="./z_allure_reports"]
+       [pytest -s -v --alluredir="./z_allure_reports"]
+       [pytest fileName.py --alluredir="./z_allure_reports"]
+       [pytest fileName.py -s -v --alluredir="./z_allure_reports"]
+                result : multiple json files created inside the folder : z_allure_reports
+
+       ->[allure serve ./z_allure_reports]
+                result : allure report generated in browser
+
+    For capturing screenshot on test failure:->
+     - make conftest.py file at root dir and add some code
+     - then add another function
+     - @pytest.mark.usefixtures("log_on_failure") add this to all test cases
+
+15. conftest.py file:  // execution to all testcases for all files
+     - kept common fixtures in the file which act as globally to all tests in the framework
+     - @pytest.fixture(scope="function/module/class/session")
+           session: - remove parallel execution
+                    - code executes only once for all test cases (sequential execution)
+
+
+
+
+
+
+
+
+
+

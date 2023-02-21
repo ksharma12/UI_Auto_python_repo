@@ -1,0 +1,12 @@
+[32mINFO    [0m Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
+[32mINFO    [0m Selenium_Operations.Driver_Operations:Driver_Operations.py:75 Window full screened successfully
+[32mINFO    [0m Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 15
+[32mINFO    [0m Test_Dummy_Registration:Test_Dummy_Registration.py:22 ********** Test Do Sign up started **********
+[32mINFO    [0m Selenium_Operations.Element_Operations:Element_Operations.py:30 <selenium.webdriver.remote.webelement.WebElement (session="353ee6aafc8655185457e831418de6e0", element="6b7f206e-6ab1-4d9a-b8d8-9d7243d6b567")> in focus now
+[32mINFO    [0m Selenium_Operations.Element_Operations:Element_Operations.py:386 <selenium.webdriver.remote.webelement.WebElement (session="353ee6aafc8655185457e831418de6e0", element="6b7f206e-6ab1-4d9a-b8d8-9d7243d6b567")> is displayed
+[32mINFO    [0m Selenium_Operations.Element_Operations:Element_Operations.py:30 <selenium.webdriver.remote.webelement.WebElement (session="353ee6aafc8655185457e831418de6e0", element="6b7f206e-6ab1-4d9a-b8d8-9d7243d6b567")> in focus now
+[32mINFO    [0m Selenium_Operations.Element_Operations:Element_Operations.py:386 <selenium.webdriver.remote.webelement.WebElement (session="353ee6aafc8655185457e831418de6e0", element="6b7f206e-6ab1-4d9a-b8d8-9d7243d6b567")> is displayed
+[32mINFO    [0m Selenium_Operations.Element_Operations:Element_Operations.py:30 <selenium.webdriver.remote.webelement.WebElement (session="353ee6aafc8655185457e831418de6e0", element="7dc154be-0c7c-4174-9282-2a31372c19e5")> in focus now
+[32mINFO    [0m Selenium_Operations.Element_Operations:Element_Operations.py:506 <selenium.webdriver.remote.webelement.WebElement (session="353ee6aafc8655185457e831418de6e0", element="7dc154be-0c7c-4174-9282-2a31372c19e5")> moved to element
+[32mINFO    [0m Selenium_Operations.Element_Operations:Element_Operations.py:30 <selenium.webdriver.remote.webelement.WebElement (session="353ee6aafc8655185457e831418de6e0", element="3afb4582-4904-4825-aac6-9f8b4039841b")> in focus now
+[32mINFO    [0m Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully

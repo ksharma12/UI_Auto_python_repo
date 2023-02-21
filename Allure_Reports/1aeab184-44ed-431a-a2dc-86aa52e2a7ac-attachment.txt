@@ -1,0 +1,7 @@
+[32mINFO    [0m Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
+[32mINFO    [0m Selenium_Operations.Driver_Operations:Driver_Operations.py:75 Window full screened successfully
+[32mINFO    [0m Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 15
+[32mINFO    [0m Test_Dummy_Registration:Test_Dummy_Registration.py:22 ********** Test Do Sign up started **********
+[32mINFO    [0m Selenium_Operations.Element_Operations:Element_Operations.py:30 <selenium.webdriver.remote.webelement.WebElement (session="f9f0a789eebd8e7131eef3fd8fb46636", element="778add89-18d8-41ef-b295-6c17f39235c3")> in focus now
+[32mINFO    [0m Selenium_Operations.Element_Operations:Element_Operations.py:506 <selenium.webdriver.remote.webelement.WebElement (session="f9f0a789eebd8e7131eef3fd8fb46636", element="778add89-18d8-41ef-b295-6c17f39235c3")> moved to element
+[32mINFO    [0m Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully

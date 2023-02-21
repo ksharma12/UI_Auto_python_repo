@@ -1,0 +1,5 @@
+1. Element not intractable : check .is_displayed()^/.is_enabled() , wait for element to be displayed^/enabled
+2. NoSuchElementException :
+   - may be element in iframe
+   - may be there is a shadow dom
+3. AttributeError: {move_to} requires a WebElement - locator used instead of element

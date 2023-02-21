@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/Users/keshavsharma/Desktop/UI_Auto/Selenium_Operations/Waits_Operations.py", line 57, in wait_until_element_present_visible
+    element_present_visible = wait.until(
+  File "/Users/keshavsharma/Desktop/UI_Auto/venv/lib/python3.9/site-packages/selenium/webdriver/support/wait.py", line 95, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+Traceback (most recent call last):
+  File "/Users/keshavsharma/Desktop/UI_Auto/Selenium_Operations/Element_Operations.py", line 57, in click
+    ele.click()
+  File "/Users/keshavsharma/Desktop/UI_Auto/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 93, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/keshavsharma/Desktop/UI_Auto/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 410, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/keshavsharma/Desktop/UI_Auto/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 444, in execute
+    self.error_handler.check_response(response)
+  File "/Users/keshavsharma/Desktop/UI_Auto/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 249, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=109.0.5414.119)
+Stacktrace:
+0   chromedriver                        0x0000000104936fa8 chromedriver + 4886440
+1   chromedriver                        0x00000001048b4643 chromedriver + 4351555
+2   chromedriver                        0x000000010450299d chromedriver + 477597
+3   chromedriver                        0x0000000104548f51 chromedriver + 765777
+4   chromedriver                        0x0000000104539d73 chromedriver + 703859
+5   chromedriver                        0x000000010456d5d2 chromedriver + 914898
+6   chromedriver                        0x00000001045393dd chromedriver + 701405
+7   chromedriver                        0x000000010456d78e chromedriver + 915342
+8   chromedriver                        0x00000001045885fe chromedriver + 1025534
+9   chromedriver                        0x000000010456d3a3 chromedriver + 914339
+10  chromedriver                        0x000000010453757f chromedriver + 693631
+11  chromedriver                        0x0000000104538b1e chromedriver + 699166
+12  chromedriver                        0x0000000104903b9e chromedriver + 4676510
+13  chromedriver                        0x000000010490891e chromedriver + 4696350
+14  chromedriver                        0x000000010491019f chromedriver + 4727199
+15  chromedriver                        0x000000010490981a chromedriver + 4700186
+16  chromedriver                        0x00000001048dca62 chromedriver + 4516450
+17  chromedriver                        0x00000001049288c8 chromedriver + 4827336
+18  chromedriver                        0x0000000104928a45 chromedriver + 4827717
+19  chromedriver                        0x000000010493e7ef chromedriver + 4917231
+20  libsystem_pthread.dylib             0x00007ff802303259 _pthread_start + 125
+21  libsystem_pthread.dylib             0x00007ff8022fec7b thread_start + 15
+

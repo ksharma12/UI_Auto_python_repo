@@ -1,0 +1,15 @@
+User Navigated to https://www.way2automation.com/
+Window full screened successfully
+Implicit wait set to 15
+<selenium.webdriver.remote.webelement.WebElement (session="4a78250d21bb2630b10af3f1330a1663", element="7ea9cb60-95af-49fc-831b-681e7c0d7774")> element is in focus and present Now
+<selenium.webdriver.remote.webelement.WebElement (session="4a78250d21bb2630b10af3f1330a1663", element="d7700706-0769-4aba-abe1-4c2fa8a11a28")> element is in focus and present and visible Now
+<selenium.webdriver.remote.webelement.WebElement (session="4a78250d21bb2630b10af3f1330a1663", element="d7700706-0769-4aba-abe1-4c2fa8a11a28")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4a78250d21bb2630b10af3f1330a1663", element="d7700706-0769-4aba-abe1-4c2fa8a11a28")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4a78250d21bb2630b10af3f1330a1663", element="d7700706-0769-4aba-abe1-4c2fa8a11a28")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4a78250d21bb2630b10af3f1330a1663", element="d7700706-0769-4aba-abe1-4c2fa8a11a28")> moved to element
+None
+<selenium.webdriver.remote.webelement.WebElement (session="4a78250d21bb2630b10af3f1330a1663", element="bbac8e18-d623-49dd-9ac9-74fdf6d9b29e")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4a78250d21bb2630b10af3f1330a1663", element="bbac8e18-d623-49dd-9ac9-74fdf6d9b29e")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4a78250d21bb2630b10af3f1330a1663", element="bbac8e18-d623-49dd-9ac9-74fdf6d9b29e")> element highlighted with border color red
+None
+all windows closed successfully

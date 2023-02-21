@@ -1,0 +1,55 @@
+User Navigated to https://www.way2automation.com/
+Window full screened successfully
+Implicit wait set to 15
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="a1ef1bac-363c-415b-b630-80b6f7f654d1")> element is in focus and present Now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="a1ef1bac-363c-415b-b630-80b6f7f654d1")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="a1ef1bac-363c-415b-b630-80b6f7f654d1")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="a1ef1bac-363c-415b-b630-80b6f7f654d1")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="a1ef1bac-363c-415b-b630-80b6f7f654d1")> clicked successfully
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="9c05dc64-0623-4f8a-a611-c3a9031c527c")> element is in focus and present and visible Now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="9c05dc64-0623-4f8a-a611-c3a9031c527c")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="9c05dc64-0623-4f8a-a611-c3a9031c527c")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="9c05dc64-0623-4f8a-a611-c3a9031c527c")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="9c05dc64-0623-4f8a-a611-c3a9031c527c")> moved to element
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="88df2899-d529-4e44-b80c-469e449033e9")> element is in focus and present and visible Now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="88df2899-d529-4e44-b80c-469e449033e9")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="88df2899-d529-4e44-b80c-469e449033e9")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="88df2899-d529-4e44-b80c-469e449033e9")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="88df2899-d529-4e44-b80c-469e449033e9")> clicked successfully
+Window full screened successfully
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="157ac863-c627-4b16-b422-272f05da5155")> element is in focus and present and visible Now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="157ac863-c627-4b16-b422-272f05da5155")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="157ac863-c627-4b16-b422-272f05da5155")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="157ac863-c627-4b16-b422-272f05da5155")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="157ac863-c627-4b16-b422-272f05da5155")> element input value is Rahul
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="248b1e65-f277-430c-9fc7-1e4195c8493c")> element is in focus and present and visible Now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="248b1e65-f277-430c-9fc7-1e4195c8493c")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="248b1e65-f277-430c-9fc7-1e4195c8493c")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="248b1e65-f277-430c-9fc7-1e4195c8493c")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="248b1e65-f277-430c-9fc7-1e4195c8493c")> element input value is 8927342.0
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="0b2bc466-9d80-4109-a323-9bde13aaa238")> element is in focus and present and visible Now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="0b2bc466-9d80-4109-a323-9bde13aaa238")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="0b2bc466-9d80-4109-a323-9bde13aaa238")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="0b2bc466-9d80-4109-a323-9bde13aaa238")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="0b2bc466-9d80-4109-a323-9bde13aaa238")> element input value is trainer@way2automation.com
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="48df8668-330f-4506-8f2f-8432187040de")> element is in focus and present and visible Now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="48df8668-330f-4506-8f2f-8432187040de")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="48df8668-330f-4506-8f2f-8432187040de")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="48df8668-330f-4506-8f2f-8432187040de")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="48df8668-330f-4506-8f2f-8432187040de")> dropdown selected successfully via value
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="187d64ca-7308-45ee-b28f-6b2d33f37e22")> element is in focus and present and visible Now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="187d64ca-7308-45ee-b28f-6b2d33f37e22")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="187d64ca-7308-45ee-b28f-6b2d33f37e22")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="187d64ca-7308-45ee-b28f-6b2d33f37e22")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="187d64ca-7308-45ee-b28f-6b2d33f37e22")> element input value is Delhi
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="187d64ca-7308-45ee-b28f-6b2d33f37e22")> element is in focus and present and visible Now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="1e2ee17d-f4d8-44e3-9250-d11f3c5d53ba")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="1e2ee17d-f4d8-44e3-9250-d11f3c5d53ba")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="1e2ee17d-f4d8-44e3-9250-d11f3c5d53ba")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="1e2ee17d-f4d8-44e3-9250-d11f3c5d53ba")> element input value is rahularora1987
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="187d64ca-7308-45ee-b28f-6b2d33f37e22")> element is in focus and present and visible Now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="9938e561-45c0-4b5d-b96d-4c0cb90e4ca4")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="9938e561-45c0-4b5d-b96d-4c0cb90e4ca4")> in focus now
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="9938e561-45c0-4b5d-b96d-4c0cb90e4ca4")> element highlighted with border color red
+<selenium.webdriver.remote.webelement.WebElement (session="4b10fe52bd9cbdba59c15684b0ca6d95", element="9938e561-45c0-4b5d-b96d-4c0cb90e4ca4")> element input value is lsajdfksf
+all windows closed successfully
