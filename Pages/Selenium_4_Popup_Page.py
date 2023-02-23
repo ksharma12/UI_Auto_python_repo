@@ -10,7 +10,3 @@ class Selenium_4_Popup_Page(Element_Operations):
     def close_selenium_four_popup(self):
         self.wait_until_element_present("Selenium4_popup_close_icon__XPATH")
         self.click("Selenium4_popup_close_icon__XPATH")
-
-    def rows_colums_numer(self):
-        self.wait_until_element_present("test__XPATH")
-        self.find_element("test__XPATH")

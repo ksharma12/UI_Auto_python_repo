@@ -2,10 +2,9 @@ import allure
 from allure_commons.types import AttachmentType
 from selenium import webdriver
 import pytest
+from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
-
-from Selenium_Operations.Driver_Operations import Driver_Operations
 from Utils.IniFile_Reader_Writer_Operations import IniFile_Reader_Writer_Operations
 
 ini_file_read_write = IniFile_Reader_Writer_Operations("../conf.ini")
@@ -29,22 +28,24 @@ def log_on_failure(request, get_browser):
         allure.attach(driver_ops.get_screenshot_as_png(), name="dologin", attachment_type=AttachmentType.PNG)
 
 
-@pytest.fixture(params=[browser[0], browser[1]], scope="function")
+@pytest.fixture(params=browser, scope="function")
 def get_browser(request):
     from Selenium_Operations.Driver_Operations import Driver_Operations
     global driver
     if request.param == "chrome":
         if bool(ini_file_read_write.get_value_from_key_in_section("BASIC_CONFIGS", "headless")):
             options = Options()
-            options = headless_mode_configuration(options)
+            options = headless_mode_configuration_chrome(options)
             driver = webdriver.Chrome('chromedriver', options=options)
         elif not bool(ini_file_read_write.get_value_from_key_in_section("BASIC_CONFIGS", "headless")):
             driver = webdriver.Chrome()
     if request.param == "firefox":
         if bool(ini_file_read_write.get_value_from_key_in_section("BASIC_CONFIGS", "headless")):
+            cap = DesiredCapabilities().FIREFOX
+            desired_capabilities_firefox(cap)
             options = FirefoxOptions()
-            options = headless_mode_configuration(options)
-            driver = webdriver.Firefox(options=options)
+            options = headless_mode_configuration_firefox(options)
+            driver = webdriver.Firefox(capabilities=cap, options=options)
         elif not bool(ini_file_read_write.get_value_from_key_in_section("BASIC_CONFIGS", "headless")):
             driver = webdriver.Firefox()
     driver_ops = Driver_Operations(driver)
@@ -56,7 +57,7 @@ def get_browser(request):
     driver_ops.quit_browser()
 
 
-def headless_mode_configuration(options):
+def headless_mode_configuration_chrome(options):
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
     options.add_argument("start-maximized")
@@ -65,3 +66,16 @@ def headless_mode_configuration(options):
     options.add_argument("window-size=1920x1080")
     return options
 
+
+def headless_mode_configuration_firefox(options):
+    options.add_argument('--headless')
+    # options.add_argument('--disable-gpu')
+    # options.add_argument("start-maximized")
+    # options.add_argument("disable-infobars")
+    # options.add_argument("--disable-extensions")
+    # options.add_argument("window-size=1920x1080")
+    return options
+
+
+def desired_capabilities_firefox(cap):
+    cap["marionette"] = False

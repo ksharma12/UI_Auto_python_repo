@@ -679,3 +679,828 @@ unwatchForTabs()@TargetList.jsm:70
 unwatchForTargets()@TargetList.jsm:37
 destructor()@TargetList.jsm:109
 close()@RemoteAgent.jsm:129
+1677137549134	geckodriver	INFO	Listening on 127.0.0.1:49483
+1677137552171	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 84" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilelcPQXv"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677137552432	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677137552435	Marionette	INFO	Listening on port 49504
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+Read port: 49504
+WebDriver BiDi listening on ws://127.0.0.1:49484
+1677137552551	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilelcPQXv\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:49484/devtools/browser/3250b18a-c0dd-4743-8e5f-e04370846a80
+1677137613190	geckodriver	INFO	Listening on 127.0.0.1:49690
+1677137616237	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 91" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileSjyA7l"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677137616428	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677137616430	Marionette	INFO	Listening on port 49699
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+Read port: 49699
+WebDriver BiDi listening on ws://127.0.0.1:49691
+1677137616500	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileSjyA7l\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:49691/devtools/browser/21f7220a-cdb7-41e8-aa3e-10e97565cfdd
+1677137619062	geckodriver	INFO	Listening on 127.0.0.1:49720
+1677137622122	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 21" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileyRrBQN"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677137622312	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677137622314	Marionette	INFO	Listening on port 49728
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+Read port: 49728
+WebDriver BiDi listening on ws://127.0.0.1:49721
+1677137622385	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileyRrBQN\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:49721/devtools/browser/0a5863d0-f278-4cf3-a45a-b01d530f9410
+1677137624876	geckodriver	INFO	Listening on 127.0.0.1:49751
+1677137627945	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 52" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile0TJD3U"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677137628137	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677137628140	Marionette	INFO	Listening on port 49759
+Read port: 49759
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:49752
+1677137628209	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile0TJD3U\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:49752/devtools/browser/aa8f0473-d4b4-4c98-953a-18712932562d
+1677137630710	geckodriver	INFO	Listening on 127.0.0.1:49783
+1677137633776	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 84" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilez4GoJi"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677137633970	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677137633973	Marionette	INFO	Listening on port 49791
+Read port: 49791
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:49784
+1677137634041	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilez4GoJi\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:49784/devtools/browser/ad4ea0f7-04ee-4bb1-8380-be7370069179
+1677138405054	geckodriver	INFO	Listening on 127.0.0.1:50015
+1677138408126	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 16" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileRhRd8n"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677138408320	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677138408323	Marionette	INFO	Listening on port 50038
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 50038
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:50016
+1677138408391	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileRhRd8n\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:50016/devtools/browser/3709b629-b6fc-4ad8-8f70-cf10f165bc62
+1677138518172	geckodriver	INFO	Listening on 127.0.0.1:50200
+1677138521241	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 01" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile0IFJZE"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677138521432	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677138521434	Marionette	INFO	Listening on port 50208
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+Read port: 50208
+WebDriver BiDi listening on ws://127.0.0.1:50201
+1677138521501	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile0IFJZE\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:50201/devtools/browser/f1d18dc4-63d9-47af-9d8e-3a452ce07a78
+1677138524097	geckodriver	INFO	Listening on 127.0.0.1:50230
+1677138527171	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 31" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile2DEVRv"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677138527361	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677138527363	Marionette	INFO	Listening on port 50238
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 50238
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:50231
+1677138527434	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile2DEVRv\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:50231/devtools/browser/3efb2096-8422-4941-9f09-9ec01ea30dcd
+1677138529937	geckodriver	INFO	Listening on 127.0.0.1:50260
+1677138533006	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 61" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofiledlaWR2"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677138533199	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677138533202	Marionette	INFO	Listening on port 50269
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 50269
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:50261
+1677138533272	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofiledlaWR2\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:50261/devtools/browser/d28278c8-e6d1-45c9-a413-c1f165a053b7
+1677138535779	geckodriver	INFO	Listening on 127.0.0.1:50290
+1677138538837	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 91" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileQdfIms"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677138539030	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677138539033	Marionette	INFO	Listening on port 50299
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+Read port: 50299
+WebDriver BiDi listening on ws://127.0.0.1:50291
+1677138539103	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileQdfIms\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:50291/devtools/browser/754b8ae9-1bc7-4938-923d-11941df0d68d
+1677139180792	geckodriver	INFO	Listening on 127.0.0.1:50620
+1677139183865	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 21" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileaDDfwD"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139184054	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139184056	Marionette	INFO	Listening on port 50643
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+Read port: 50643
+WebDriver BiDi listening on ws://127.0.0.1:50621
+1677139184126	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileaDDfwD\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:50621/devtools/browser/b68acbcc-6b8f-4f33-8d10-db36394cb6ec
+1677139186715	geckodriver	INFO	Listening on 127.0.0.1:50664
+1677139189763	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 65" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile5wk3F0"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139189964	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139189966	Marionette	INFO	Listening on port 50672
+Read port: 50672
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:50665
+1677139190036	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile5wk3F0\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:50665/devtools/browser/2e74a5c1-19e5-481e-95bc-3c0c7f6dc038
+1677139192548	geckodriver	INFO	Listening on 127.0.0.1:50695
+1677139195607	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 96" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileZwslfe"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139195799	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139195801	Marionette	INFO	Listening on port 50703
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+Read port: 50703
+WebDriver BiDi listening on ws://127.0.0.1:50696
+1677139195869	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileZwslfe\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:50696/devtools/browser/d889b4c2-7a91-47c6-9cf8-94f2f8fadf13
+1677139198372	geckodriver	INFO	Listening on 127.0.0.1:50726
+1677139201437	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 27" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilehh7DXY"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139201632	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139201635	Marionette	INFO	Listening on port 50735
+Read port: 50735
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:50727
+1677139201706	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilehh7DXY\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:50727/devtools/browser/efaef46d-e36b-494c-a106-bf53c440de0d
+1677139414474	geckodriver	INFO	Listening on 127.0.0.1:51126
+1677139417547	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 27" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileuIYqtM"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139417740	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139417742	Marionette	INFO	Listening on port 51134
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 51134
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:51127
+1677139417812	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileuIYqtM\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51127/devtools/browser/fb04f03e-d9a6-4647-86df-b715d2ca0ff5
+1677139420414	geckodriver	INFO	Listening on 127.0.0.1:51156
+1677139423486	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 57" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileUlGh3B"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139423675	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139423677	Marionette	INFO	Listening on port 51164
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 51164
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:51157
+1677139423745	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileUlGh3B\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51157/devtools/browser/4bce2eeb-fe0b-4689-b8cc-75b9893cc388
+1677139426254	geckodriver	INFO	Listening on 127.0.0.1:51188
+1677139429317	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 89" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilea2ojWe"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139429512	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139429515	Marionette	INFO	Listening on port 51201
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 51201
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:51189
+1677139429586	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilea2ojWe\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51189/devtools/browser/bc85ac90-3bd7-47cf-92b1-7b00222b27ae
+1677139432091	geckodriver	INFO	Listening on 127.0.0.1:51226
+1677139435174	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 27" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilesrtv1I"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139435368	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139435371	Marionette	INFO	Listening on port 51234
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 51234
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:51227
+1677139435439	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilesrtv1I\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51227/devtools/browser/4f9cb6f6-838d-4903-aec4-a7fb87f9e021
+1677139934233	geckodriver	INFO	Listening on 127.0.0.1:51400
+1677139937324	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 01" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileuLT0CA"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139937518	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139937521	Marionette	INFO	Listening on port 51438
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 51438
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:51401
+1677139937589	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileuLT0CA\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51401/devtools/browser/52c94340-1aa7-45fd-b2d4-55457b93afa0
+1677139940184	geckodriver	INFO	Listening on 127.0.0.1:51455
+1677139943265	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 56" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileNBcGm3"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139943459	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139943462	Marionette	INFO	Listening on port 51463
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 51463
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:51456
+1677139943530	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileNBcGm3\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51456/devtools/browser/703e8474-9195-4768-bdf0-31104203ca57
+1677139946030	geckodriver	INFO	Listening on 127.0.0.1:51488
+1677139949096	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 89" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileep4VMM"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139949290	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139949292	Marionette	INFO	Listening on port 51496
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 51496
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:51489
+1677139949361	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileep4VMM\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51489/devtools/browser/42fb67f7-e392-4cb0-85df-8b8a5a28b09c
+1677139951908	geckodriver	INFO	Listening on 127.0.0.1:51511
+1677139954988	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 12" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile0HLsjg"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677139955185	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677139955188	Marionette	INFO	Listening on port 51519
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 51519
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:51512
+1677139955258	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile0HLsjg\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51512/devtools/browser/81e02bc1-0b45-4ff6-a6c0-1a7ed833c7ee
+1677141130870	geckodriver	INFO	Listening on 127.0.0.1:52020
+1677141133939	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 21" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileFFthnD"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677141134139	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677141134141	Marionette	INFO	Listening on port 52058
+Read port: 52058
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:52021
+1677141134211	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileFFthnD\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:52021/devtools/browser/3a374fc0-2ffd-4e88-b8d9-e29bf3d1b324
+1677141136783	geckodriver	INFO	Listening on 127.0.0.1:52075
+1677141139845	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 76" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileP46ZPl"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677141140047	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677141140049	Marionette	INFO	Listening on port 52084
+Read port: 52084
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:52076
+1677141140121	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileP46ZPl\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:52076/devtools/browser/87720972-7810-462b-b71a-79e693b9b1f5
+1677141142625	geckodriver	INFO	Listening on 127.0.0.1:52105
+1677141145674	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 06" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileQHL9rw"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677141145872	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677141145875	Marionette	INFO	Listening on port 52113
+Read port: 52113
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:52106
+1677141145946	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileQHL9rw\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:52106/devtools/browser/9c0b7e84-d96c-4c58-80e9-600c41198e4f
+1677141148437	geckodriver	INFO	Listening on 127.0.0.1:52135
+1677141151479	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 36" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilemjtxLx"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677141151672	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677141151675	Marionette	INFO	Listening on port 52143
+Read port: 52143
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:52136
+1677141151742	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilemjtxLx\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:52136/devtools/browser/5908e7de-6db4-41c4-9586-11a87ca9e855
+1677146661065	geckodriver	INFO	Listening on 127.0.0.1:55152
+1677146664128	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 53" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileXRhV4Z"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677146664327	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677146664330	Marionette	INFO	Listening on port 55185
+Read port: 55185
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:55153
+1677146664400	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileXRhV4Z\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:55153/devtools/browser/658ff788-8490-4728-bc55-d625a9cf3812
+1677146666993	geckodriver	INFO	Listening on 127.0.0.1:55201
+1677146670057	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 02" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileKNwRWb"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677146670248	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677146670251	Marionette	INFO	Listening on port 55209
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+Read port: 55209
+WebDriver BiDi listening on ws://127.0.0.1:55202
+1677146670320	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileKNwRWb\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:55202/devtools/browser/d8b23564-2eea-4aff-ab0c-5fc21611e882
+1677146672824	geckodriver	INFO	Listening on 127.0.0.1:55232
+1677146675894	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 33" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilegmjv1d"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677146676088	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677146676091	Marionette	INFO	Listening on port 55240
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 55240
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:55233
+1677146676159	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilegmjv1d\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:55233/devtools/browser/8ed1924c-ae65-4e03-9331-0ba0691a0fa3
+1677146678656	geckodriver	INFO	Listening on 127.0.0.1:55262
+1677146681735	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 63" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilewQDk9w"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677146681932	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677146681934	Marionette	INFO	Listening on port 55287
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 55287
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:55263
+1677146682005	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilewQDk9w\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:55263/devtools/browser/9487d8dc-5773-42e9-a187-cdcb0a2d1854
+1677146786967	geckodriver	INFO	Listening on 127.0.0.1:55353
+1677146790050	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 54" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilenP8f2P"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677146790243	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677146790246	Marionette	INFO	Listening on port 55361
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+Read port: 55361
+WebDriver BiDi listening on ws://127.0.0.1:55354
+1677146790315	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilenP8f2P\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:55354/devtools/browser/c68b47da-4f38-45d2-a916-f4b99c129bf7
+1677146792882	geckodriver	INFO	Listening on 127.0.0.1:55382
+1677146795939	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 83" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile5fUjNW"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677146796139	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677146796142	Marionette	INFO	Listening on port 55390
+Read port: 55390
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:55383
+1677146796211	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile5fUjNW\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:55383/devtools/browser/f1ea5357-6bce-42f4-a9ff-56b963df8c18
+1677147134051	geckodriver	INFO	Listening on 127.0.0.1:55809
+1677147137068	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55810" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileSHzXJr"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147137264	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147137267	Marionette	INFO	Listening on port 55832
+Read port: 55832
+WebDriver BiDi listening on ws://127.0.0.1:55810
+1677147137331	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileSHzXJr\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55810/devtools/browser/7cb48b28-82f3-4f47-a6f7-fd93a38b8c65
+1677147141130	Marionette	INFO	Stopped listening on port 55832
+Dynamically enable window occlusion 1
+[Parent 24488, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:777
+1677147143716	geckodriver	INFO	Listening on 127.0.0.1:55904
+1677147146793	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55905" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileCDjHnS"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147146987	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147146990	Marionette	INFO	Listening on port 55912
+Read port: 55912
+WebDriver BiDi listening on ws://127.0.0.1:55905
+1677147147057	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileCDjHnS\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55905/devtools/browser/0b937fca-0c64-46df-8656-d9fc06e487ac
+1677147154775	Marionette	INFO	Stopped listening on port 55912
+Dynamically enable window occlusion 1
+1677147157360	geckodriver	INFO	Listening on 127.0.0.1:55971
+1677147160423	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55972" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileSiThsU"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147160617	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147160620	Marionette	INFO	Listening on port 55980
+Read port: 55980
+WebDriver BiDi listening on ws://127.0.0.1:55972
+1677147160685	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileSiThsU\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55972/devtools/browser/dff8e13a-6351-4a36-a800-875306a04504
+1677147168432	Marionette	INFO	Stopped listening on port 55980
+Dynamically enable window occlusion 1
+1677147171007	geckodriver	INFO	Listening on 127.0.0.1:56042
+1677147174074	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "56043" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilePH7n7D"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147174269	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147174272	Marionette	INFO	Listening on port 56050
+Read port: 56050
+WebDriver BiDi listening on ws://127.0.0.1:56043
+1677147174337	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilePH7n7D\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:56043/devtools/browser/978c1e36-7261-4c91-8eff-ef5d890184dc
+1677147182327	Marionette	INFO	Stopped listening on port 56050
+Dynamically enable window occlusion 1
+1677147208800	geckodriver	INFO	Listening on 127.0.0.1:56125
+1677147211868	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 26" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileBYMWDO"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147212060	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147212063	Marionette	INFO	Listening on port 56133
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 56133
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:56126
+1677147212133	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileBYMWDO\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56126/devtools/browser/29ecff5f-ffe6-4b56-85e9-3d5493ce1c40
+1677147214693	geckodriver	INFO	Listening on 127.0.0.1:56155
+1677147217770	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 56" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofiledEJHEm"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147217969	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147217971	Marionette	INFO	Listening on port 56163
+Read port: 56163
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:56156
+1677147218041	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofiledEJHEm\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56156/devtools/browser/8e06ccde-45dd-4838-9cfe-7a1835a25ac5
+1677147220550	geckodriver	INFO	Listening on 127.0.0.1:56186
+1677147223611	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-gpu" "start-maximiz ... 87" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileKe4fzG"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147223807	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147223810	Marionette	INFO	Listening on port 56194
+console.error: "Warning: unrecognized command line flag -disable-gpu\n"
+Read port: 56194
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+WebDriver BiDi listening on ws://127.0.0.1:56187
+1677147223878	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileKe4fzG\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56187/devtools/browser/9f96e4c7-2e4d-4882-bede-6757a36b53c7
+1677147226377	geckodriver	INFO	Listening on 127.0.0.1:56218
+1677147335497	geckodriver	INFO	Listening on 127.0.0.1:56242
+1677147338547	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--remote-debugging-port" "56243" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileCnQl5j"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147338740	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147338743	Marionette	INFO	Listening on port 56250
+Read port: 56250
+WebDriver BiDi listening on ws://127.0.0.1:56243
+1677147338804	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileCnQl5j\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56243/devtools/browser/037336fc-ff9b-46a2-a6b9-25b2892f79b3
+1677147342504	Marionette	INFO	Stopped listening on port 56250
+Dynamically enable window occlusion 1
+1677147345083	geckodriver	INFO	Listening on 127.0.0.1:56313
+1677147348145	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--remote-debugging-port" "56314" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile8fnUUa"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147348338	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147348340	Marionette	INFO	Listening on port 56321
+Read port: 56321
+WebDriver BiDi listening on ws://127.0.0.1:56314
+1677147348403	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile8fnUUa\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56314/devtools/browser/597528a6-675b-42a2-a2ca-bbb978f23942
+1677147356349	Marionette	INFO	Stopped listening on port 56321
+Dynamically enable window occlusion 1
+1677147358919	geckodriver	INFO	Listening on 127.0.0.1:56381
+1677147361982	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--remote-debugging-port" "56382" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile32RbOn"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147362176	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147362179	Marionette	INFO	Listening on port 56389
+Read port: 56389
+WebDriver BiDi listening on ws://127.0.0.1:56382
+1677147362241	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile32RbOn\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56382/devtools/browser/233d218a-47dd-4100-afa8-74cdde144409
+1677147370014	Marionette	INFO	Stopped listening on port 56389
+Dynamically enable window occlusion 1
+1677147372597	geckodriver	INFO	Listening on 127.0.0.1:56448
+1677147375670	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--remote-debugging-port" "56449" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile3XJb8R"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147375897	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147375900	Marionette	INFO	Listening on port 56461
+WebDriver BiDi listening on ws://127.0.0.1:56449
+Read port: 56461
+1677147376105	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofile3XJb8R\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56449/devtools/browser/68f57cc7-230b-44e2-8cb1-8678dbf66f2b
+1677147383552	Marionette	INFO	Stopped listening on port 56461
+Dynamically enable window occlusion 1
+1677147474326	geckodriver	INFO	Listening on 127.0.0.1:56557
+1677147477412	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--remote-debugging-port" "56558" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilennibdi"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147477606	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147477609	Marionette	INFO	Listening on port 56585
+Read port: 56585
+WebDriver BiDi listening on ws://127.0.0.1:56558
+1677147477670	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofilennibdi\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56558/devtools/browser/db3f52c7-4961-418d-ba54-a6dedbad8f51
+1677147481293	Marionette	INFO	Stopped listening on port 56585
+Dynamically enable window occlusion 1
+1677147483855	geckodriver	INFO	Listening on 127.0.0.1:56647
+1677147486908	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--remote-debugging-port" "56648" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileGvEGoj"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147487103	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147487106	Marionette	INFO	Listening on port 56655
+Read port: 56655
+WebDriver BiDi listening on ws://127.0.0.1:56648
+1677147487168	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileGvEGoj\\search.json.mozlz4", (void 0)))
+1677147567360	geckodriver	INFO	Listening on 127.0.0.1:56669
+1677147570411	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--remote-debugging-port" "56670" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofiledBfSgJ"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147570605	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147570608	Marionette	INFO	Listening on port 56677
+Read port: 56677
+WebDriver BiDi listening on ws://127.0.0.1:56670
+1677147570679	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofiledBfSgJ\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56670/devtools/browser/7edeb7a0-5edb-4ecd-9707-140bc4357edd
+1677147574314	Marionette	INFO	Stopped listening on port 56677
+Dynamically enable window occlusion 1
+1677147576885	geckodriver	INFO	Listening on 127.0.0.1:56741
+1677147579948	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--remote-debugging-port" "56742" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileI1LBFt"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147580138	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147580141	Marionette	INFO	Listening on port 56749
+Read port: 56749
+WebDriver BiDi listening on ws://127.0.0.1:56742
+1677147580203	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileI1LBFt\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56742/devtools/browser/0e9ebb61-284c-4b6c-a996-eaffb7c25119
+1677147587869	Marionette	INFO	Stopped listening on port 56749
+Dynamically enable window occlusion 1
+1677147590454	geckodriver	INFO	Listening on 127.0.0.1:56811
+1677147593521	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--remote-debugging-port" "56812" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofiletdFHP4"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147593715	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147593718	Marionette	INFO	Listening on port 56819
+Read port: 56819
+WebDriver BiDi listening on ws://127.0.0.1:56812
+1677147593778	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofiletdFHP4\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56812/devtools/browser/593555de-97a5-4ad6-a4d9-0a556714e7b8
+1677147601492	Marionette	INFO	Stopped listening on port 56819
+Dynamically enable window occlusion 1
+1677147604061	geckodriver	INFO	Listening on 127.0.0.1:56878
+1677147607143	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--remote-debugging-port" "56879" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileZSdcdg"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677147607336	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1677147607339	Marionette	INFO	Listening on port 56886
+Read port: 56886
+WebDriver BiDi listening on ws://127.0.0.1:56879
+1677147607400	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileZSdcdg\\search.json.mozlz4", (void 0)))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:56879/devtools/browser/69354093-db11-42aa-9641-94dbeec4a4ee
+JavaScript error: https://cdn-dhgoo.nitrocdn.com/xCAsbNxHXJRsdeHsZORMtXBORsPzQRzr/assets/static/optimized/rev-6a6b912/wp-content/plugins/elementor/assets/js/nitro-min-a76789b0aaf02aace078bcce0ae55d11.webpack.runtime.min.js, line 2: ChunkLoadError: Loading chunk 268 failed.
+(error: https://www.way2automation.com/wp-content/plugins/elementor/assets/js/image-carousel.db284b09c0f8a8f1c44d.bundle.min.js)
+JavaScript error: https://cdn-dhgoo.nitrocdn.com/xCAsbNxHXJRsdeHsZORMtXBORsPzQRzr/assets/static/optimized/rev-6a6b912/wp-content/plugins/elementor/assets/js/nitro-min-a76789b0aaf02aace078bcce0ae55d11.webpack.runtime.min.js, line 2: ChunkLoadError: Loading chunk 268 failed.
+(error: https://www.way2automation.com/wp-content/plugins/elementor/assets/js/image-carousel.db284b09c0f8a8f1c44d.bundle.min.js)
+JavaScript error: https://cdn-dhgoo.nitrocdn.com/xCAsbNxHXJRsdeHsZORMtXBORsPzQRzr/assets/static/optimized/rev-6a6b912/wp-content/plugins/elementor/assets/js/nitro-min-a76789b0aaf02aace078bcce0ae55d11.webpack.runtime.min.js, line 2: ChunkLoadError: Loading chunk 723 failed.
+(error: https://www.way2automation.com/wp-content/plugins/elementor/assets/js/lightbox.2b2c155d6ec60974d8c4.bundle.min.js)
+1677147614901	Marionette	INFO	Stopped listening on port 56886
+Dynamically enable window occlusion 1
