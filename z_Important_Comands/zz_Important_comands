@@ -171,8 +171,18 @@ how to execute test cases in pytest:
                     - code executes only once for all test cases (sequential execution)
 
 
+git commands :
+git init
+git add README.md
+git commit -m "first commit
+git branch -M main
+git remote add origin https://github.com/vedthemaster/tutorial-yt.git
+git push -u origin main
 
+how to fix github error permission denied :
+https://www.youtube.com/watch?v=dxvnbKaszBw&ab_channel=BiggiDroid
 
+mac ==> command + shift + g (to find .ssh key)
 
 
 
