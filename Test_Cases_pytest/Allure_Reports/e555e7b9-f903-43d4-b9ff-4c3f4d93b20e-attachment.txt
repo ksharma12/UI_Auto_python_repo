@@ -1,0 +1,6 @@
+User Navigated to https://www.way2automation.com/
+Implicit wait set to 10
+None
+None
+None
+all windows closed successfully

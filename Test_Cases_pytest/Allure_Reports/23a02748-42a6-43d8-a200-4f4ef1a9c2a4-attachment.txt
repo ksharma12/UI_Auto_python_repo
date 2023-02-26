@@ -1,0 +1,4 @@
+[32mINFO    [0m Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
+[32mINFO    [0m Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 10
+[32mINFO    [0m test_Selenium_4_Popup:test_Selenium_4_Popup.py:15 ********** Test close selenium pop up started **********
+[32mINFO    [0m Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully
