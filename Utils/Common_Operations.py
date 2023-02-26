@@ -1,4 +1,7 @@
+import os
 import traceback
+
+import configparser
 from selenium.webdriver.common.by import By
 from Utils.IniFile_Reader_Writer_Operations import IniFile_Reader_Writer_Operations
 
@@ -34,7 +37,6 @@ class Common_Operations:
         conf = IniFile_Reader_Writer_Operations(self._confi_file_path)
         return conf.get_value_from_key_in_section("BASIC_CONFIGS", key)
 
-
     # This function highlight respective element
     def highlight_element(self, web_element):
         flag = False
@@ -56,3 +58,12 @@ class Common_Operations:
         except:
             print(traceback.print_exc())
         return flag
+
+    @staticmethod
+    def read_data(file_name, section_name, key_name):
+        thisfolder = os.path.dirname(os.path.abspath(__file__))
+        initfile = os.path.join(thisfolder, file_name)
+        config = configparser.RawConfigParser()
+        res = config.read(initfile)
+        data = config.get(section_name, key_name).split(",")
+        return data
