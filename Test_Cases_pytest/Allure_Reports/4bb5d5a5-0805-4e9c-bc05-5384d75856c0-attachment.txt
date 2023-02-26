@@ -1,0 +1,112 @@
+Traceback (most recent call last):
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/Selenium_Operations/Waits_Operations.py", line 31, in wait_until_element_present
+    element_present = wait.until(
+                      ^^^^^^^^^^^
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/venv/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 95, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000102631138 chromedriver + 4923704
+1   chromedriver                        0x00000001025a99d3 chromedriver + 4368851
+2   chromedriver                        0x00000001021f2787 chromedriver + 472967
+3   chromedriver                        0x0000000102236ba3 chromedriver + 752547
+4   chromedriver                        0x0000000102236df1 chromedriver + 753137
+5   chromedriver                        0x000000010227d734 chromedriver + 1042228
+6   chromedriver                        0x000000010225ffdd chromedriver + 921565
+7   chromedriver                        0x000000010227ac0f chromedriver + 1031183
+8   chromedriver                        0x000000010225fd23 chromedriver + 920867
+9   chromedriver                        0x0000000102226a4b chromedriver + 686667
+10  chromedriver                        0x0000000102228044 chromedriver + 692292
+11  chromedriver                        0x00000001025fc8fe chromedriver + 4708606
+12  chromedriver                        0x0000000102601e22 chromedriver + 4730402
+13  chromedriver                        0x000000010260a6bf chromedriver + 4765375
+14  chromedriver                        0x0000000102602e80 chromedriver + 4734592
+15  chromedriver                        0x00000001025d3975 chromedriver + 4540789
+16  chromedriver                        0x0000000102624e78 chromedriver + 4873848
+17  chromedriver                        0x0000000102624ff5 chromedriver + 4874229
+18  chromedriver                        0x00000001026396de chromedriver + 4957918
+19  libsystem_pthread.dylib             0x00007ff802303259 _pthread_start + 125
+20  libsystem_pthread.dylib             0x00007ff8022fec7b thread_start + 15
+
+Traceback (most recent call last):
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/Selenium_Operations/Element_Operations.py", line 27, in find_element
+    web_element = self.driver.find_element(self.get_locator_signature(locator), self.get_locator_values(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 861, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 444, in execute
+    self.error_handler.check_response(response)
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/venv/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 249, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//i[@class='eicon-close']"}
+  (Session info: headless chrome=110.0.5481.100)
+Stacktrace:
+0   chromedriver                        0x0000000102631138 chromedriver + 4923704
+1   chromedriver                        0x00000001025a99d3 chromedriver + 4368851
+2   chromedriver                        0x00000001021f2787 chromedriver + 472967
+3   chromedriver                        0x0000000102236ba3 chromedriver + 752547
+4   chromedriver                        0x0000000102236df1 chromedriver + 753137
+5   chromedriver                        0x000000010227d734 chromedriver + 1042228
+6   chromedriver                        0x000000010225ffdd chromedriver + 921565
+7   chromedriver                        0x000000010227ac0f chromedriver + 1031183
+8   chromedriver                        0x000000010225fd23 chromedriver + 920867
+9   chromedriver                        0x0000000102226a4b chromedriver + 686667
+10  chromedriver                        0x0000000102228044 chromedriver + 692292
+11  chromedriver                        0x00000001025fc8fe chromedriver + 4708606
+12  chromedriver                        0x0000000102601e22 chromedriver + 4730402
+13  chromedriver                        0x000000010260a6bf chromedriver + 4765375
+14  chromedriver                        0x0000000102602e80 chromedriver + 4734592
+15  chromedriver                        0x00000001025d3975 chromedriver + 4540789
+16  chromedriver                        0x0000000102624e78 chromedriver + 4873848
+17  chromedriver                        0x0000000102624ff5 chromedriver + 4874229
+18  chromedriver                        0x00000001026396de chromedriver + 4957918
+19  libsystem_pthread.dylib             0x00007ff802303259 _pthread_start + 125
+20  libsystem_pthread.dylib             0x00007ff8022fec7b thread_start + 15
+
+Traceback (most recent call last):
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/Selenium_Operations/Element_Operations.py", line 27, in find_element
+    web_element = self.driver.find_element(self.get_locator_signature(locator), self.get_locator_values(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 861, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 444, in execute
+    self.error_handler.check_response(response)
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/venv/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 249, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//i[@class='eicon-close']"}
+  (Session info: headless chrome=110.0.5481.100)
+Stacktrace:
+0   chromedriver                        0x0000000102631138 chromedriver + 4923704
+1   chromedriver                        0x00000001025a99d3 chromedriver + 4368851
+2   chromedriver                        0x00000001021f2787 chromedriver + 472967
+3   chromedriver                        0x0000000102236ba3 chromedriver + 752547
+4   chromedriver                        0x0000000102236df1 chromedriver + 753137
+5   chromedriver                        0x000000010227d734 chromedriver + 1042228
+6   chromedriver                        0x000000010225ffdd chromedriver + 921565
+7   chromedriver                        0x000000010227ac0f chromedriver + 1031183
+8   chromedriver                        0x000000010225fd23 chromedriver + 920867
+9   chromedriver                        0x0000000102226a4b chromedriver + 686667
+10  chromedriver                        0x0000000102228044 chromedriver + 692292
+11  chromedriver                        0x00000001025fc8fe chromedriver + 4708606
+12  chromedriver                        0x0000000102601e22 chromedriver + 4730402
+13  chromedriver                        0x000000010260a6bf chromedriver + 4765375
+14  chromedriver                        0x0000000102602e80 chromedriver + 4734592
+15  chromedriver                        0x00000001025d3975 chromedriver + 4540789
+16  chromedriver                        0x0000000102624e78 chromedriver + 4873848
+17  chromedriver                        0x0000000102624ff5 chromedriver + 4874229
+18  chromedriver                        0x00000001026396de chromedriver + 4957918
+19  libsystem_pthread.dylib             0x00007ff802303259 _pthread_start + 125
+20  libsystem_pthread.dylib             0x00007ff8022fec7b thread_start + 15
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/Selenium_Operations/Element_Operations.py", line 55, in click
+    ele = self.find_element(locator)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/keshavsharma/Desktop/frameworks/UI_Auto_python/Selenium_Operations/Element_Operations.py", line 35, in find_element
+    assert False
+AssertionError
