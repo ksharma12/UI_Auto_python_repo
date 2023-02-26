@@ -38,7 +38,7 @@ def log_on_failure(request, get_browser):
     item = request.node
     driver_ops = get_browser
     if item.rep_call.failed:
-        allure.attach(driver_ops.get_screenshot_as_png(), name="dologin", attachment_type=AttachmentType.PNG)
+        allure.attach(driver_ops.get_screenshot_as_png(), name="Bug_screenshot", attachment_type=AttachmentType.PNG)
 
 
 @pytest.fixture(params=browsers, scope="function")

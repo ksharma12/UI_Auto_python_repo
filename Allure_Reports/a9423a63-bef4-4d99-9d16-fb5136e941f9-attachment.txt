@@ -1,5 +1,0 @@
-INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
-INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:75 Window full screened successfully
-INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 15
-INFO     Test_Dummy_Registration:Test_Dummy_Registration.py:22 ********** Test Do Sign up started **********
-INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully

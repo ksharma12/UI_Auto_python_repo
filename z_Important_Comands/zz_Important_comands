@@ -302,6 +302,15 @@ how to execute test cases in pytest:
            session: - remove parallel execution
                     - code executes only once for all test cases (sequential execution)
 
+----------------------------------------Jenkins---------------------------------------------------------------
+uninstall jenkins :
+brew uninstall jenkins --force
+brew cleanup
+
+Install jenkins .war file from https://www.jenkins.io/download/
+jenkins_2.289.3.war jenkins file version
+
+
 
 
 

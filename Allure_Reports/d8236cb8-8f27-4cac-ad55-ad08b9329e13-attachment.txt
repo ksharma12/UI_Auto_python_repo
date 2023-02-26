@@ -1,7 +1,0 @@
-User Navigated to https://www.way2automation.com/
-Window full screened successfully
-Implicit wait set to 15
-None
-None
-None
-all windows closed successfully

@@ -7,7 +7,7 @@ from Utils.Logging_Operations import Logger
 log = Logger(__name__, logging.INFO)
 
 
-class Test_Dummy_Registration(BaseTest):
+class Test_Selenium_4_Registration(BaseTest):
 
     @pytest.mark.regression
     def test_close_selenium_pop_up(self):
