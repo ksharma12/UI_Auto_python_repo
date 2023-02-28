@@ -10,7 +10,6 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 import Utils.IniFile_Reader_Writer_Operations
 from Utils.Common_Operations import Common_Operations
 
-
 # ini_file_read_write = IniFile_Reader_Writer_Operations(r'../conf.ini')  # ../conf.ini
 # browser = ini_file_read_write.get_multiple_values_from_key_in_section("BASIC_CONFIGS", "browser")
 
@@ -77,6 +76,8 @@ def headless_mode_configuration_chrome(options):
     options.add_argument("disable-infobars")
     options.add_argument("--disable-extensions")
     options.add_argument("window-size=1920x1080")
+    # Pass the argument 1 to allow and 2 to block
+    options.add_experimental_option("prefs", {"profile.default_content_setting_values.notifications": 2})
     return options
 
 
