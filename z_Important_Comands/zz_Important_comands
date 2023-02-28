@@ -179,7 +179,19 @@ how to execute test cases in pytest:
            session: - remove parallel execution
                     - code executes only once for all test cases (sequential execution)
 
+------------------------------------------------testcase studio-----------------------------------------------------------------
+https://chrome.google.com/webstore/detail/testcase-studio/loopjjegnlccnhgfehekecpanpmielcj
+TestCase Studio record the user actions performed on a web application in English Sentences.
+TestCase Studio is a platform to record the user actions performed on a web application in English Sentences. This recorder plugin also records screenshots. It will also generate the XPath and Automation Code for every user action. User can save or copy these recorded steps as a Test case.
+Watch this video tutorial to make the best use of TestCase Studio.
+https://www.youtube.com/watch?v=KQ81oE1x6ao
+Very simple steps to use the tool-
+1. Click on the TestCase Studio logo in the tool bar.
+2. It will open the TestCase Studio window.
+3. Now keep performing your steps, it will automatically write english sentence for every user action.
+4. You can download the written steps by clicking on download button.
 
+-------------------------------------------------------git---------------------------------------------------------------------
 git commands :
 git init
 git add README.md
@@ -187,6 +199,9 @@ git commit -m "first commit
 git branch -M main
 git remote add origin https://github.com/vedthemaster/tutorial-yt.git
 git push -u origin main
+
+git clone from specific branch :
+git clone --single-branch --branch <branchname> <remote-repo>
 
 git conflicts :
 https://stackoverflow.com/questions/161813/how-do-i-resolve-merge-conflicts-in-a-git-repository
