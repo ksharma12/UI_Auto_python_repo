@@ -159,6 +159,15 @@ how to execute test cases in pytest:
        ->[allure serve ./z_allure_reports]
                 result : allure report generated in browser
 
+       -> for generating allure reports with all features trends,history,etc
+           allure generate ../Allure_Report  --clean -o ../Allure_Report
+           allure serve path_of_allure-report_folder_generated
+           Note :
+                  Keep environment.xml and executor.json file in folder where all the json files of test_data recite to populate in report
+
+       -> for creating trends and other stuff in allure report :-
+          https://stackoverflow.com/questions/44979176/how-to-show-data-for-launches-environment-trend-and-executors-in-allure-report#:~:text=For%20trends%20and%20other%20graphs%20to%20be%20displayed%2C,cmd%20prompt%20allure%20generate%20path_of_allure-report_folder_generated%20--clean%20-o%20allure-report
+
     For capturing screenshot on test failure:->
      - make conftest.py file at root dir and add some code
      - then add another function

@@ -14,10 +14,10 @@ from Utils.Common_Operations import Common_Operations
 # ini_file_read_write = IniFile_Reader_Writer_Operations(r'../conf.ini')  # ../conf.ini
 # browser = ini_file_read_write.get_multiple_values_from_key_in_section("BASIC_CONFIGS", "browser")
 
-thisfolder = os.path.dirname(os.path.abspath(__file__))
-initfile = os.path.join(thisfolder, 'conf.ini')
+this_folder = os.path.dirname(os.path.abspath(__file__))
+init_file = os.path.join(this_folder, 'conf.ini')
 config = configparser.RawConfigParser()
-res = config.read(initfile)
+res = config.read(init_file)
 browsers = config.get('BASIC_CONFIGS', 'browser').split(",")
 headless = config.get('BASIC_CONFIGS', 'headless')
 implicit_wait = config.get('BASIC_CONFIGS', 'implicit_wait')
