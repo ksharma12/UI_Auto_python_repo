@@ -53,10 +53,9 @@ def get_browser(request):
             driver = webdriver.Chrome()
     if request.param == "firefox":
         if bool(headless):
-            cap = DesiredCapabilities().FIREFOX
-            desired_capabilities_firefox(cap)
             options = FirefoxOptions()
-            options = headless_mode_configuration_firefox(options)
+            cap = DesiredCapabilities().FIREFOX['marionette']
+            options = headless_mode_configuration_firefox(options=options)
             driver = webdriver.Firefox(capabilities=cap, options=options)
         elif not bool(headless):
             driver = webdriver.Firefox()
@@ -83,13 +82,6 @@ def headless_mode_configuration_chrome(options):
 
 def headless_mode_configuration_firefox(options):
     options.add_argument('--headless')
-    # options.add_argument('--disable-gpu')
-    # options.add_argument("start-maximized")
-    # options.add_argument("disable-infobars")
-    # options.add_argument("--disable-extensions")
-    # options.add_argument("window-size=1920x1080")
+    options.set_preference("permissions.default.desktop-notification", 1)
     return options
 
-
-def desired_capabilities_firefox(cap):
-    cap["marionette"] = False
