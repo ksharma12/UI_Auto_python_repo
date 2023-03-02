@@ -17,7 +17,7 @@ class Element_Operations(Waits_Operations, Common_Operations, Driver_Operations)
         self.driver = driver
         Common_Operations.__init__(self, self.driver)
         Waits_Operations.__init__(self, self.driver)
-        Driver_Operations.__init__(self,self.driver)
+        Driver_Operations.__init__(self, self.driver)
         self.actions = ActionChains(self.driver)
 
     # WebElement Operations
@@ -33,7 +33,6 @@ class Element_Operations(Waits_Operations, Common_Operations, Driver_Operations)
         except:
             print(traceback.print_exc())
             assert False
-            
 
     # This function return list of web elements
     def find_elements(self, locator):
@@ -305,7 +304,7 @@ class Element_Operations(Waits_Operations, Common_Operations, Driver_Operations)
             ele = self.find_element(locator)
             self.highlight_element(ele)
             # print(f"element tagname is {str(ele.tag_name)}")
-            #log.logger.info(f"{ele} element tagname is {str(ele_tag_name)}")
+            # log.logger.info(f"{ele} element tagname is {str(ele_tag_name)}")
             ele.submit()
             flag = True
         except:
