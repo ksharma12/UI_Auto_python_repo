@@ -59,11 +59,13 @@ class Common_Operations:
             print(traceback.print_exc())
         return flag
 
-    @staticmethod
-    def read_data(file_name, section_name, key_name):
-        thisfolder = os.path.dirname(os.path.abspath(__file__))
-        initfile = os.path.join(thisfolder, file_name)
+    def read_data(self, file_name, section_name, key_name):
+        this_folder = os.path.dirname(os.path.abspath(__file__))
+        init_file = os.path.join(this_folder, file_name)
         config = configparser.RawConfigParser()
-        res = config.read(initfile)
-        data = config.get(section_name, key_name).split(",")
-        return data
+        res = config.read(init_file)
+        print(config.get(section_name, key_name))
+
+
+obj = Common_Operations("driver")
+obj.read_data('conf.ini', 'BASIC_CONFIGS', 'implicit_wait')

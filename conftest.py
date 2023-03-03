@@ -54,13 +54,15 @@ def get_browser(request):
     if request.param == "firefox":
         if bool(headless):
             options = FirefoxOptions()
-            cap = DesiredCapabilities().FIREFOX['marionette']
+            # cap = DesiredCapabilities().FIREFOX['marionette']  # with mac
             options = headless_mode_configuration_firefox(options=options)
-            driver = webdriver.Firefox(capabilities=cap, options=options)
+            # driver = webdriver.Firefox(capabilities=cap, options=options)  # with mac
+            driver = webdriver.Firefox(options=options)  # with windows
         elif not bool(headless):
             driver = webdriver.Firefox()
     driver_ops = Driver_Operations(driver)
     request.cls.driver = driver
+
     driver_ops.get_url(test_site_url)
     driver_ops.set_driver_implicit_wait(
         int(implicit_wait))

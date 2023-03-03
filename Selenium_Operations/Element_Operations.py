@@ -2,7 +2,6 @@ import logging
 from selenium.webdriver import ActionChains
 import traceback
 from selenium.webdriver.support.select import Select
-
 from Selenium_Operations.Driver_Operations import Driver_Operations
 from Selenium_Operations.Waits_Operations import Waits_Operations
 from Utils.Common_Operations import Common_Operations

@@ -10,8 +10,12 @@ class Waits_Operations(Common_Operations):
     def __init__(self, driver):
         self.driver = driver
         Common_Operations.__init__(self, self.driver)
+        # self.explicit_wait = int(10)
+        # self.fluent_wait = float(0.01)
         self.explicit_wait = int(self.get_basic_config_values("explicit_wait"))
         self.fluent_wait = float(self.get_basic_config_values("fluent_wait"))
+        # self.explicit_wait = int(self.read_data("conf.ini", "BASIC_CONFIGS", "explicit_wait"))
+        # self.fluent_wait = float(self.read_data("conf.ini", "BASIC_CONFIGS", "fluent_wait"))
 
     # This function return element once it become clickable and return ele
     def wait_until_element_clickable(self, locator):
