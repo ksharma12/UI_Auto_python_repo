@@ -1,9 +1,7 @@
 import os
 import traceback
-
 import configparser
 from selenium.webdriver.common.by import By
-from Utils.IniFile_Reader_Writer_Operations import IniFile_Reader_Writer_Operations
 
 
 class Common_Operations:
@@ -11,7 +9,7 @@ class Common_Operations:
     def __init__(self, driver):
         self.driver = driver
 
-    _confi_file_path = "../conf.ini"
+    _confi_file_path = "conf.ini"
     _js_arg_ele_border_color = "red"
     _selectors_dict = {
         "XPATH": By.XPATH,
@@ -25,17 +23,37 @@ class Common_Operations:
     }
 
     def get_locator_signature(self, locator):
-        selector = str(locator).split("__")[1]
-        return self._selectors_dict[selector]
+        try:
+            selector = str(locator).split("__")[1]
+            return self._selectors_dict[selector]
+        except:
+            print(traceback.print_exc())
 
     def get_locator_values(self, key):
         # get locators from .ini file
-        conf = IniFile_Reader_Writer_Operations(self._confi_file_path)
-        return conf.get_value_from_key_in_section("LOCATORS", key)
+        try:
+            config = configparser.ConfigParser()
+            config.read(self._confi_file_path)
+            print(config.get("LOCATORS", key))
+            return config.get("LOCATORS", key)
+        except:
+            print(traceback.print_exc())
 
     def get_basic_config_values(self, key):
-        conf = IniFile_Reader_Writer_Operations(self._confi_file_path)
-        return conf.get_value_from_key_in_section("BASIC_CONFIGS", key)
+        try:
+            config = configparser.ConfigParser()
+            config.read(self._confi_file_path)
+            return config.get("BASIC_CONFIGS", key)
+        except:
+            print(traceback.print_exc())
+
+    def get_value(self, file_path, section, key):
+        try:
+            config = configparser.ConfigParser()
+            config.read(file_path)
+            return config.get(section, key)
+        except:
+            print(traceback.print_exc())
 
     # This function highlight respective element
     def highlight_element(self, web_element):
@@ -58,14 +76,3 @@ class Common_Operations:
         except:
             print(traceback.print_exc())
         return flag
-
-    def read_data(self, file_name, section_name, key_name):
-        this_folder = os.path.dirname(os.path.abspath(__file__))
-        init_file = os.path.join(this_folder, file_name)
-        config = configparser.RawConfigParser()
-        res = config.read(init_file)
-        print(config.get(section_name, key_name))
-
-
-obj = Common_Operations("driver")
-obj.read_data('conf.ini', 'BASIC_CONFIGS', 'implicit_wait')

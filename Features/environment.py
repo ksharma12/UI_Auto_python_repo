@@ -28,9 +28,9 @@ def before_scenario(context, scenario):
             context.options = Utils.options_firefox()
             context.capabilities = DesiredCapabilities().FIREFOX['marionette']
             context.driver = webdriver.Firefox(capabilities=context.capabilities, options=context.options)
-        elif browser == "chrome" and headlessMode == "headOFF" and platform == "windows":
+        elif browser == "chrome" and headlessMode == "headOff" and platform == "windows":
             context.driver = webdriver.Chrome()
-        elif browser == "fireFox" and headlessMode == "headOFF" and platform == "windows":
+        elif browser == "firefox" and headlessMode == "headOff" and platform == "windows":
             context.driver = webdriver.Firefox()
         driver_ops = Driver_Operations(context.driver)
         driver_ops.set_driver_implicit_wait(10)
