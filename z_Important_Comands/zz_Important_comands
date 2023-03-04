@@ -1,3 +1,5 @@
+NO Section Error for configparser arrise only due to config.ini file path
+
 pip install -U selenium  ---> update selenium
 
 pip install --upgrade pip -----> update pip
@@ -53,6 +55,10 @@ is possible via selenium grid
   -
 
 ----------------------------------------PyTest---------------------------------------------------------------
+Likewise, you can have other conftest.py files in subdirectories of the top tests directory.
+If you do, fixtures defined in these lower-level conftest.py files will be available to tests in that directory and subdirectories.
+So far, however, the fixtures in the Tasks project are intended ...
+
 To add any package to current project :
     preferences -> current_project -> python_interpreter -> (+)sign -> package_name
 

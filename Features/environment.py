@@ -8,6 +8,7 @@ from selenium.webdriver import DesiredCapabilities
 from Features.Steps import utils
 from Features.Steps.utils import Utils
 from Selenium_Operations.Driver_Operations import Driver_Operations
+from Utils.Common_Operations import Common_Operations
 
 
 # def before_all(context):
@@ -18,23 +19,39 @@ from Selenium_Operations.Driver_Operations import Driver_Operations
 #     print(" Executes before every feature.")
 
 
+# def before_scenario(context, scenario):
+#     for tag in scenario.tags:
+#         (platform, browser, headlessMode) = tag.split('_')
+#         if browser == "chrome" and headlessMode == "headOn" and platform == "windows":
+#             context.options = Utils.options_chrome()
+#             context.driver = webdriver.Chrome('chromedriver', options=context.options)
+#         elif browser == "firefox" and headlessMode == "headOn" and platform == "windows":
+#             context.options = Utils.options_firefox()
+#             context.capabilities = DesiredCapabilities().FIREFOX['marionette']
+#             context.driver = webdriver.Firefox(capabilities=context.capabilities, options=context.options)
+#         elif browser == "chrome" and headlessMode == "headOff" and platform == "windows":
+#             context.driver = webdriver.Chrome()
+#         elif browser == "firefox" and headlessMode == "headOff" and platform == "windows":
+#             context.driver = webdriver.Firefox()
+#         driver_ops = Driver_Operations(context.driver)
+#         driver_ops.set_driver_implicit_wait(10)
+
 def before_scenario(context, scenario):
     for tag in scenario.tags:
-        (platform, browser, headlessMode) = tag.split('_')
-        if browser == "chrome" and headlessMode == "headOn" and platform == "windows":
+        if tag == "ChromeHeadless" in scenario.tags:
             context.options = Utils.options_chrome()
             context.driver = webdriver.Chrome('chromedriver', options=context.options)
-        elif browser == "firefox" and headlessMode == "headOn" and platform == "windows":
+        elif tag == "FirefoxHeadless" in scenario.tags:
             context.options = Utils.options_firefox()
             context.capabilities = DesiredCapabilities().FIREFOX['marionette']
             context.driver = webdriver.Firefox(capabilities=context.capabilities, options=context.options)
-        elif browser == "chrome" and headlessMode == "headOff" and platform == "windows":
+        elif tag == "ChromeOnly" in scenario.tags:
             context.driver = webdriver.Chrome()
-        elif browser == "firefox" and headlessMode == "headOff" and platform == "windows":
+        elif tag == "FirefoxOnly" in scenario.tags:
             context.driver = webdriver.Firefox()
         driver_ops = Driver_Operations(context.driver)
-        driver_ops.set_driver_implicit_wait(10)
-
+        common_ops = Common_Operations(context.driver)
+        driver_ops.set_driver_implicit_wait(common_ops.get_basic_config_values("implicit_wait"))
 
 # def before_step(context, step):
 #     print("   Executes before every step.")

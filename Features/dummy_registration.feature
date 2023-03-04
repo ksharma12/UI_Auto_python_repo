@@ -1,7 +1,7 @@
 Feature: Dummy Registration
 
-  @windows_firefox_headOff
-  @windows_chrome_headOff
+
+  @FirefoxOnly @ChromeOnly @ChromeHeadless
   Scenario Outline: Dummy Registration Form
     Given User navigated to url
     When Verify user successfully landed on home page

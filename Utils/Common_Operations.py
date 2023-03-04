@@ -34,7 +34,6 @@ class Common_Operations:
         try:
             config = configparser.ConfigParser()
             config.read(self._confi_file_path)
-            print(config.get("LOCATORS", key))
             return config.get("LOCATORS", key)
         except:
             print(traceback.print_exc())
