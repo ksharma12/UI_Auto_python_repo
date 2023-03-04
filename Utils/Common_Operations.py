@@ -9,7 +9,7 @@ class Common_Operations:
     def __init__(self, driver):
         self.driver = driver
 
-    _confi_file_path = "conf.ini"
+    _confi_file_path = "../conf.ini"
     _js_arg_ele_border_color = "red"
     _selectors_dict = {
         "XPATH": By.XPATH,
