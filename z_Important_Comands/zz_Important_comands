@@ -20,6 +20,8 @@ pycharm_icon -> preferences -> current_project -> python_interpreter -> (+)sign 
 
 pytest -> install
 
+ctr + alt + s  => settings in pycharm
+
 python -m pip check-----------------> check for missing dependencies
 pip freeze > requirements.txt ------------> pip freeze outputs a list of all installed Python modules with their versions.
 pip install -r requirements.txt -----------> This installs all of the modules listed in our Python requirements file into our project environment.
@@ -209,6 +211,12 @@ git push -u origin main
 git clone from specific branch :
 git clone --single-branch --branch <branchname> <remote-repo>
 
+git reset - for un_add all added files before commit
+git reset <file> - for un_add particular file
+
+git stash - save the current working image in a stash list with stash@{number}, number = 1,2,3,4,5...
+git stash apply stash@{number} to apply these changes on local working
+
 git conflicts :
 https://stackoverflow.com/questions/161813/how-do-i-resolve-merge-conflicts-in-a-git-repository
 
@@ -257,3 +265,48 @@ Go to Member Login
 Username: keshavsharma.tu@gmail.com
 Password: Way2Automation
 Go to "My Courses" to see the courses you are enrolled in.
+
+--------------------------------------------------------------------Cucumber--------------------------------------------------------------------------------------------------------
+python behave website : https://behave.readthedocs.io/en/stable/
+eg:
+Feature: Search Feature
+  Scenario: validating the search feature
+    Given I navigate to google.com
+    When I Validate the Page title
+    Then I enter the text as Hello Selenium
+    And I click the search button
+
+These are also called as user stories
+
+To Create step definition files :
+  - In terminal navigate to folder containing feature-files folder and run
+     [cd path_to_folder_containing_feature_files]
+     [cmd command : behave features]
+  - Steps:
+    - [steps directory] would always come inside [feature directory]
+    - create steps.py file for same .feature file
+    - run cmd command for feature
+    - take missing steps code from console and paste it in the ide
+    - from the .feature file hover and create the step definition files for same in feature directory
+
+Hooks :
+ - hooks kept in environment.py file
+ - before_scenario
+ - after_step
+
+ url for behave ::- https://www.tutorialspoint.com/behave/behave_hooks.htm
+ - use use_step_matcher('parse') instead of use_step_matcher('re')
+
+ How to run test-cases from cmd in behave
+ - behave feature_file_folder
+ - behave feature_file_folder\.features_file  [path of feature_file]
+ - running feature files with tags :: behave feature_file_folder --tags=smoke/sanity/etc
+
+-----------------------------------------------------------------behave and allure report together--------------------------------------------------------------------------------
+- install allure behave : pip install allure-behave
+- cmd command to run allure report with behave results :
+       [behave -f allure_behave.formatter:AllureFormatter -o allure_behave_results_folder/ features --tags=-smoke/sanity/etc]
+- then allure serve folder_name_with_json_files
+
+-----------------------------------------------Executing allure report using program--------------------------------------------------------------------------------------------
+https://stackoverflow.com/questions/41960081/how-to-send-an-email-of-allure-report

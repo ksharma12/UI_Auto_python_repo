@@ -51,7 +51,8 @@ def before_scenario(context, scenario):
             context.driver = webdriver.Firefox()
         driver_ops = Driver_Operations(context.driver)
         common_ops = Common_Operations(context.driver)
-        driver_ops.set_driver_implicit_wait(common_ops.get_basic_config_values("implicit_wait"))
+        #driver_ops.set_driver_implicit_wait(int(common_ops.get_value("conf.ini", "BASIC_CONFIGS", "implicit_wait")))
+
 
 # def before_step(context, step):
 #     print("   Executes before every step.")

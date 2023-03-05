@@ -1,7 +1,7 @@
 Feature: Dummy Registration
 
 
-  @FirefoxOnly @ChromeOnly @ChromeHeadless
+  @ChromeOnly
   Scenario Outline: Dummy Registration Form
     Given User navigated to url
     When Verify user successfully landed on home page
