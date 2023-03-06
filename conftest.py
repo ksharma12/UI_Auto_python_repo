@@ -4,10 +4,8 @@ import os
 from allure_commons.types import AttachmentType
 from selenium import webdriver
 import pytest
-from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
-import Utils.IniFile_Reader_Writer_Operations
 from Utils.Common_Operations import Common_Operations
 
 # ini_file_read_write = IniFile_Reader_Writer_Operations(r'../conf.ini')  # ../conf.ini
@@ -21,8 +19,6 @@ browsers = config.get('BASIC_CONFIGS', 'browser').split(",")
 headless = config.get('BASIC_CONFIGS', 'headless')
 implicit_wait = config.get('BASIC_CONFIGS', 'implicit_wait')
 test_site_url = config.get('BASIC_CONFIGS', 'test_site_url')
-
-
 
 
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
@@ -88,4 +84,3 @@ def headless_mode_configuration_firefox(options):
     options.add_argument('--headless')
     # options.set_preference("permissions.default.desktop-notification", 1)
     return options
-
