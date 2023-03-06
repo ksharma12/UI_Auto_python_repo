@@ -17,7 +17,8 @@ class Waits_Operations(Common_Operations):
         try:
             wait = WebDriverWait(self.driver, timeout=self.explicit_wait, poll_frequency=self.fluent_wait)
             element = wait.until(
-                EC.element_to_be_clickable((self.get_locator_signature(locator), self.get_value("../conf.ini", "LOCATORS", locator))))
+                EC.element_to_be_clickable((self.get_locator_signature(locator),
+                                            self.get_value("../conf.ini", "LOCATORS", locator))))
             print(f"{element} element is in focus and clickable Now")
             return element
         except:
@@ -28,7 +29,8 @@ class Waits_Operations(Common_Operations):
         try:
             wait = WebDriverWait(self.driver, timeout=self.explicit_wait, poll_frequency=self.fluent_wait)
             element_present = wait.until(
-                EC.presence_of_element_located((self.get_locator_signature(locator), self.get_value("../conf.ini", "LOCATORS", locator))))
+                EC.presence_of_element_located((self.get_locator_signature(locator),
+                                                self.get_value("../conf.ini", "LOCATORS", locator))))
             print(f"{element_present} element is in focus and present Now")
             return element_present
         except:

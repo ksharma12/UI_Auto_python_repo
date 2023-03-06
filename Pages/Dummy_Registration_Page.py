@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 
 from Selenium_Operations.Element_Operations import Element_Operations

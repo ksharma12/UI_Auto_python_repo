@@ -23,6 +23,8 @@ implicit_wait = config.get('BASIC_CONFIGS', 'implicit_wait')
 test_site_url = config.get('BASIC_CONFIGS', 'test_site_url')
 
 
+
+
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
@@ -78,12 +80,12 @@ def headless_mode_configuration_chrome(options):
     options.add_argument("--disable-extensions")
     options.add_argument("window-size=1920x1080")
     # Pass the argument 1 to allow and 2 to block
-    options.add_experimental_option("prefs", {"profile.default_content_setting_values.notifications": 2})
+    # options.add_experimental_option("prefs", {"profile.default_content_setting_values.notifications": 2})
     return options
 
 
 def headless_mode_configuration_firefox(options):
     options.add_argument('--headless')
-    options.set_preference("permissions.default.desktop-notification", 1)
+    # options.set_preference("permissions.default.desktop-notification", 1)
     return options
 

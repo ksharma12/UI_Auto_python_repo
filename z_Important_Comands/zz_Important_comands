@@ -243,6 +243,8 @@ uninstall jenkins :
 brew uninstall jenkins --force
 brew cleanup
 
+Jenkins 2.346. 3 is the most recent Jenkins LTS. It supports Java 8.
+
 1. Install jenkins .war file from https://www.jenkins.io/download/
 2. Jenkins_2.289.3.war jenkins file version
 3. Open cmd in location where .war file downloaded and then run command : java -jar jenkins.war
