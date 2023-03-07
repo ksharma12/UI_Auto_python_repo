@@ -1,3 +1,17 @@
+---------------------------------------------------------------------------conftest.py--------------------------------------------------------------------------------------------------
+Your conftest.py is only available to test files in the same directory, or in nested directories below.
+   tests/
+    ├── conftest.py # Applies to all tests
+    └── A/
+        ├── conftest.py # Applies only to tests in this module/folder (i.e. A).
+        ├── test_a.py
+    └── B/
+        ├── conftest.py # Applies only to tests in this module/folder (i.e. B).
+        ├── test_b.py
+
+conf.ini file ::--- read multiple .ini files data together
+https://stackoverflow.com/questions/4029946/multiple-configuration-files-with-python-configparser
+
 NO Section Error for configparser arrise only due to config.ini file path
 
 pip install -U selenium  ---> update selenium
@@ -57,6 +71,9 @@ is possible via selenium grid
   -
 
 ----------------------------------------PyTest---------------------------------------------------------------
+pytest documentation ::-->> [https://docs.pytest.org/en/7.2.x/]
+https://www.youtube.com/watch?v=snDSB9b8v_E - pytest tutorial
+
 Likewise, you can have other conftest.py files in subdirectories of the top tests directory.
 If you do, fixtures defined in these lower-level conftest.py files will be available to tests in that directory and subdirectories.
 So far, however, the fixtures in the Tasks project are intended ...
@@ -259,6 +276,17 @@ Jenkins 2.346. 3 is the most recent Jenkins LTS. It supports Java 8.
 
 help video : https://www.youtube.com/watch?v=1aXKLIbKOp4&ab_channel=Mukeshotwani
 
+
+for local it is localhost:8080 but instead company would provide us the url like  "jenkins.com.companyName..."
+username
+password
+For Khamilia-softwares
+jenkins key : 85c582c8461748d0ae2b0e0e467bb070
+http://localhost:8080/
+username - keshav
+comminity saved password and notifications
+https://community.jenkins.io/
+
 -------------------------------------way2Automation-----------------------------------------------------
 Way2Automation
 Please find the link to access the enrolled courses:
@@ -269,7 +297,7 @@ Password: Way2Automation
 Go to "My Courses" to see the courses you are enrolled in.
 
 --------------------------------------------------------------------Cucumber--------------------------------------------------------------------------------------------------------
-python behave website : https://behave.readthedocs.io/en/stable/
+python behave documentation : [https://behave.readthedocs.io/en/stable/]
 eg:
 Feature: Search Feature
   Scenario: validating the search feature
@@ -304,6 +332,9 @@ Hooks :
  - behave feature_file_folder\.features_file  [path of feature_file]
  - running feature files with tags :: behave feature_file_folder --tags=smoke/sanity/etc
 
+ installing behave via github repo :
+ pip install git+https://github.com/behave/behave
+
 -----------------------------------------------------------------behave and allure report together--------------------------------------------------------------------------------
 - install allure behave : pip install allure-behave
 - cmd command to run allure report with behave results :
@@ -312,3 +343,61 @@ Hooks :
 
 -----------------------------------------------Executing allure report using program--------------------------------------------------------------------------------------------
 https://stackoverflow.com/questions/41960081/how-to-send-an-email-of-allure-report
+
+----------------------------------------------------------------------------------APIs-------------------------------------------------------------------------------
+[requests Documentation] -----::>> [https://requests.readthedocs.io/en/latest/]
+
+[view json objects] ---> http://jsonviewer.stack.hu/
+[apis for testing purpose] ---> https://reqres.in/
+[delay apis example] ---> https://httpbin.org/
+[elements of internet] ---> https://the-internet.herokuapp.com/
+
+
+[serialization] :- Object serialization is the process of converting state of an object into byte stream. [object ----> byte]
+[deserialization] :- Deserialization is the process of reconstructing the object from the byte stream. [byte ----> object]
+[cookies] :- Cookies are small pieces of text sent to your browser by a website you visit.
+           They help that website remember information about your visit,
+           which can both make it easier to visit the site again and make the site more useful to you.
+[encoding] :- The Encoding API provides a mechanism for handling text in various character encodings, including legacy non-UTF-8 encodings.
+            The API provides four interfaces: TextDecoder , TextEncoder , TextDecoderStream and TextEncoderStream
+
+[CRUD ]:-
+Create - POST
+Read - GET
+Update - PUT/PATCH
+Delete - DELETE
+
+PUT - Update/Replace
+PATCH - Update/Modify
+
+[In PUT] :- all properties of the object be provided while making request
+we need to pass all the properties while sending put request ,
+if this record exist then  - update/replace
+if this record does not exist then - create user
+{
+  "Name": "Keshav",
+  "Phone": "90909",
+  "Address": "Banglore"
+}
+
+[In PATCH] :- specific property we want to update
+whatever property we want to update we just need to pass that
+{
+  "Address": "Haryana"
+}
+
+[TimeOut] -:
+
+- uses for restricting the api to have response in limited time,
+  ensures the performance of the api within limited given time limit
+
+[Authentication] and [Authorization] :-->
+Authentication :- If we are passing correct required credentials to access the resource.
+Authorization :- If required person is authorized to access that resource via its credentials
+
+# identification ::---->
+Username and a Password
+Authentication tokens
+Secret keys
+Bio-metrics and many other ways
+

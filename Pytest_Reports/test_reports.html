@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>test_reports.html</title>
+    <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
+  <body onLoad="init()">
+    <script>/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+function toArray(iter) {
+    if (iter === null) {
+        return null;
+    }
+    return Array.prototype.slice.call(iter);
+}
+
+function find(selector, elem) { // eslint-disable-line no-redeclare
+    if (!elem) {
+        elem = document;
+    }
+    return elem.querySelector(selector);
+}
+
+function findAll(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return toArray(elem.querySelectorAll(selector));
+}
+
+function sortColumn(elem) {
+    toggleSortStates(elem);
+    const colIndex = toArray(elem.parentNode.childNodes).indexOf(elem);
+    let key;
+    if (elem.classList.contains('result')) {
+        key = keyResult;
+    } else if (elem.classList.contains('links')) {
+        key = keyLink;
+    } else {
+        key = keyAlpha;
+    }
+    sortTable(elem, key(colIndex));
+}
+
+function showAllExtras() { // eslint-disable-line no-unused-vars
+    findAll('.col-result').forEach(showExtras);
+}
+
+function hideAllExtras() { // eslint-disable-line no-unused-vars
+    findAll('.col-result').forEach(hideExtras);
+}
+
+function showExtras(colresultElem) {
+    const extras = colresultElem.parentNode.nextElementSibling;
+    const expandcollapse = colresultElem.firstElementChild;
+    extras.classList.remove('collapsed');
+    expandcollapse.classList.remove('expander');
+    expandcollapse.classList.add('collapser');
+}
+
+function hideExtras(colresultElem) {
+    const extras = colresultElem.parentNode.nextElementSibling;
+    const expandcollapse = colresultElem.firstElementChild;
+    extras.classList.add('collapsed');
+    expandcollapse.classList.remove('collapser');
+    expandcollapse.classList.add('expander');
+}
+
+function showFilters() {
+    let visibleString = getQueryParameter('visible') || 'all';
+    visibleString = visibleString.toLowerCase();
+    const checkedItems = visibleString.split(',');
+
+    const filterItems = document.getElementsByClassName('filter');
+    for (let i = 0; i < filterItems.length; i++) {
+        filterItems[i].hidden = false;
+
+        if (visibleString != 'all') {
+            filterItems[i].checked = checkedItems.includes(filterItems[i].getAttribute('data-test-result'));
+            filterTable(filterItems[i]);
+        }
+    }
+}
+
+function addCollapse() {
+    // Add links for show/hide all
+    const resulttable = find('table#results-table');
+    const showhideall = document.createElement('p');
+    showhideall.innerHTML = '<a href="javascript:showAllExtras()">Show all details</a> / ' +
+                            '<a href="javascript:hideAllExtras()">Hide all details</a>';
+    resulttable.parentElement.insertBefore(showhideall, resulttable);
+
+    // Add show/hide link to each result
+    findAll('.col-result').forEach(function(elem) {
+        const collapsed = getQueryParameter('collapsed') || 'Passed';
+        const extras = elem.parentNode.nextElementSibling;
+        const expandcollapse = document.createElement('span');
+        if (extras.classList.contains('collapsed')) {
+            expandcollapse.classList.add('expander');
+        } else if (collapsed.includes(elem.innerHTML)) {
+            extras.classList.add('collapsed');
+            expandcollapse.classList.add('expander');
+        } else {
+            expandcollapse.classList.add('collapser');
+        }
+        elem.appendChild(expandcollapse);
+
+        elem.addEventListener('click', function(event) {
+            if (event.currentTarget.parentNode.nextElementSibling.classList.contains('collapsed')) {
+                showExtras(event.currentTarget);
+            } else {
+                hideExtras(event.currentTarget);
+            }
+        });
+    });
+}
+
+function getQueryParameter(name) {
+    const match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function init () { // eslint-disable-line no-unused-vars
+    resetSortHeaders();
+
+    addCollapse();
+
+    showFilters();
+
+    sortColumn(find('.initial-sort'));
+
+    findAll('.sortable').forEach(function(elem) {
+        elem.addEventListener('click',
+            function() {
+                sortColumn(elem);
+            }, false);
+    });
+}
+
+function sortTable(clicked, keyFunc) {
+    const rows = findAll('.results-table-row');
+    const reversed = !clicked.classList.contains('asc');
+    const sortedRows = sort(rows, keyFunc, reversed);
+    /* Whole table is removed here because browsers acts much slower
+     * when appending existing elements.
+     */
+    const thead = document.getElementById('results-table-head');
+    document.getElementById('results-table').remove();
+    const parent = document.createElement('table');
+    parent.id = 'results-table';
+    parent.appendChild(thead);
+    sortedRows.forEach(function(elem) {
+        parent.appendChild(elem);
+    });
+    document.getElementsByTagName('BODY')[0].appendChild(parent);
+}
+
+function sort(items, keyFunc, reversed) {
+    const sortArray = items.map(function(item, i) {
+        return [keyFunc(item), i];
+    });
+
+    sortArray.sort(function(a, b) {
+        const keyA = a[0];
+        const keyB = b[0];
+
+        if (keyA == keyB) return 0;
+
+        if (reversed) {
+            return keyA < keyB ? 1 : -1;
+        } else {
+            return keyA > keyB ? 1 : -1;
+        }
+    });
+
+    return sortArray.map(function(item) {
+        const index = item[1];
+        return items[index];
+    });
+}
+
+function keyAlpha(colIndex) {
+    return function(elem) {
+        return elem.childNodes[1].childNodes[colIndex].firstChild.data.toLowerCase();
+    };
+}
+
+function keyLink(colIndex) {
+    return function(elem) {
+        const dataCell = elem.childNodes[1].childNodes[colIndex].firstChild;
+        return dataCell == null ? '' : dataCell.innerText.toLowerCase();
+    };
+}
+
+function keyResult(colIndex) {
+    return function(elem) {
+        const strings = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed',
+            'Skipped', 'Passed'];
+        return strings.indexOf(elem.childNodes[1].childNodes[colIndex].firstChild.data);
+    };
+}
+
+function resetSortHeaders() {
+    findAll('.sort-icon').forEach(function(elem) {
+        elem.parentNode.removeChild(elem);
+    });
+    findAll('.sortable').forEach(function(elem) {
+        const icon = document.createElement('div');
+        icon.className = 'sort-icon';
+        icon.textContent = 'vvv';
+        elem.insertBefore(icon, elem.firstChild);
+        elem.classList.remove('desc', 'active');
+        elem.classList.add('asc', 'inactive');
+    });
+}
+
+function toggleSortStates(elem) {
+    //if active, toggle between asc and desc
+    if (elem.classList.contains('active')) {
+        elem.classList.toggle('asc');
+        elem.classList.toggle('desc');
+    }
+
+    //if inactive, reset all other functions and add ascending active
+    if (elem.classList.contains('inactive')) {
+        resetSortHeaders();
+        elem.classList.remove('inactive');
+        elem.classList.add('active');
+    }
+}
+
+function isAllRowsHidden(value) {
+    return value.hidden == false;
+}
+
+function filterTable(elem) { // eslint-disable-line no-unused-vars
+    const outcomeAtt = 'data-test-result';
+    const outcome = elem.getAttribute(outcomeAtt);
+    const classOutcome = outcome + ' results-table-row';
+    const outcomeRows = document.getElementsByClassName(classOutcome);
+
+    for(let i = 0; i < outcomeRows.length; i++){
+        outcomeRows[i].hidden = !elem.checked;
+    }
+
+    const rows = findAll('.results-table-row').filter(isAllRowsHidden);
+    const allRowsHidden = rows.length == 0 ? true : false;
+    const notFoundMessage = document.getElementById('not-found-message');
+    notFoundMessage.hidden = !allRowsHidden;
+}
+</script>
+    <h1>test_reports.html</h1>
+    <p>Report generated on 07-Mar-2023 at 16:31:35 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <h2>Environment</h2>
+    <table id="environment">
+      <tr>
+        <td>Packages</td>
+        <td>{"pluggy": "1.0.0", "pytest": "7.2.1"}</td></tr>
+      <tr>
+        <td>Platform</td>
+        <td>Windows-10-10.0.22621-SP0</td></tr>
+      <tr>
+        <td>Plugins</td>
+        <td>{"allure-pytest": "2.12.0", "ast-transformer": "1.0.3", "forked": "1.6.0", "html": "3.2.0", "metadata": "2.0.4", "soft-assertions": "0.1.2", "xdist": "3.2.0"}</td></tr>
+      <tr>
+        <td>Python</td>
+        <td>3.9.12</td></tr></table>
+    <h2>Summary</h2>
+    <p>8 tests ran in 89.28 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">8 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <h2>Results</h2>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable result initial-sort" col="result">Result</th>
+          <th class="sortable" col="name">Test</th>
+          <th class="sortable" col="duration">Duration</th>
+          <th class="sortable links" col="links">Links</th></tr>
+        <tr hidden="true" id="not-found-message">
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Test_Cases/test_Dummy_Registration.py::Test_Dummy_Registration::test_doSignUp[chrome-Keshav-1123456789.0-Keshav@asdf.com-India-Delhi-Keshav-asdf1234]</td>
+          <td class="col-duration">5.32</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>User Navigated to https://www.way2automation.com/
+Implicit wait set to 10
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 10<br/> ------------------------------Captured stdout call------------------------------ <br/>&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;ab8a3f37-4ac5-4cb2-8645-e7bb2e962ea4&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;ab8a3f37-4ac5-4cb2-8645-e7bb2e962ea4&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;ab8a3f37-4ac5-4cb2-8645-e7bb2e962ea4&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;ab8a3f37-4ac5-4cb2-8645-e7bb2e962ea4&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;ab8a3f37-4ac5-4cb2-8645-e7bb2e962ea4&quot;)&gt; moved to element
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;1e1f9c41-3162-4f64-8499-0591bde98086&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;1e1f9c41-3162-4f64-8499-0591bde98086&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;1e1f9c41-3162-4f64-8499-0591bde98086&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;1e1f9c41-3162-4f64-8499-0591bde98086&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;1e1f9c41-3162-4f64-8499-0591bde98086&quot;)&gt; clicked successfully
+Window full screened successfully
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a955db5-9b33-45d2-8323-01b9dd94b4e5&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a955db5-9b33-45d2-8323-01b9dd94b4e5&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a955db5-9b33-45d2-8323-01b9dd94b4e5&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a955db5-9b33-45d2-8323-01b9dd94b4e5&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a955db5-9b33-45d2-8323-01b9dd94b4e5&quot;)&gt; element input value is Keshav
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a082c5d-be4c-47c7-87b8-732cfdc290b1&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a082c5d-be4c-47c7-87b8-732cfdc290b1&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a082c5d-be4c-47c7-87b8-732cfdc290b1&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a082c5d-be4c-47c7-87b8-732cfdc290b1&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a082c5d-be4c-47c7-87b8-732cfdc290b1&quot;)&gt; element input value is 1123456789.0
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;5edd52f3-9db6-49c1-af44-7de987b0e85a&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;5edd52f3-9db6-49c1-af44-7de987b0e85a&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;5edd52f3-9db6-49c1-af44-7de987b0e85a&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;5edd52f3-9db6-49c1-af44-7de987b0e85a&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;5edd52f3-9db6-49c1-af44-7de987b0e85a&quot;)&gt; element input value is Keshav@asdf.com
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;8d24ccd2-ab4d-48eb-bcc4-f4778c43a325&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;8d24ccd2-ab4d-48eb-bcc4-f4778c43a325&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;8d24ccd2-ab4d-48eb-bcc4-f4778c43a325&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;8d24ccd2-ab4d-48eb-bcc4-f4778c43a325&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;8d24ccd2-ab4d-48eb-bcc4-f4778c43a325&quot;)&gt; dropdown selected successfully via value
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;3386eb4b-9e4d-450d-8d90-e62ff85ec01c&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;3386eb4b-9e4d-450d-8d90-e62ff85ec01c&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;3386eb4b-9e4d-450d-8d90-e62ff85ec01c&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;3386eb4b-9e4d-450d-8d90-e62ff85ec01c&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;3386eb4b-9e4d-450d-8d90-e62ff85ec01c&quot;)&gt; element input value is Delhi
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;3386eb4b-9e4d-450d-8d90-e62ff85ec01c&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;404a0166-f74a-49f6-968c-c822c1113161&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;404a0166-f74a-49f6-968c-c822c1113161&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;404a0166-f74a-49f6-968c-c822c1113161&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;404a0166-f74a-49f6-968c-c822c1113161&quot;)&gt; element input value is Keshav
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;3386eb4b-9e4d-450d-8d90-e62ff85ec01c&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;d94645df-9cdd-4661-b633-6a947d78e50d&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;d94645df-9cdd-4661-b633-6a947d78e50d&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;d94645df-9cdd-4661-b633-6a947d78e50d&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;d94645df-9cdd-4661-b633-6a947d78e50d&quot;)&gt; element input value is asdf1234
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     test_Dummy_Registration:test_Dummy_Registration.py:22 ********** Test Do Sign up started **********
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;ab8a3f37-4ac5-4cb2-8645-e7bb2e962ea4&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:504 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;ab8a3f37-4ac5-4cb2-8645-e7bb2e962ea4&quot;)&gt; moved to element
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;1e1f9c41-3162-4f64-8499-0591bde98086&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:57 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;1e1f9c41-3162-4f64-8499-0591bde98086&quot;)&gt; clicked successfully
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:75 Window full screened successfully
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a955db5-9b33-45d2-8323-01b9dd94b4e5&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a955db5-9b33-45d2-8323-01b9dd94b4e5&quot;)&gt; element input value is Keshav
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a082c5d-be4c-47c7-87b8-732cfdc290b1&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;4a082c5d-be4c-47c7-87b8-732cfdc290b1&quot;)&gt; element input value is 1123456789.0
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;5edd52f3-9db6-49c1-af44-7de987b0e85a&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;5edd52f3-9db6-49c1-af44-7de987b0e85a&quot;)&gt; element input value is Keshav@asdf.com
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;8d24ccd2-ab4d-48eb-bcc4-f4778c43a325&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:103 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;8d24ccd2-ab4d-48eb-bcc4-f4778c43a325&quot;)&gt; dropdown selected successfully via value
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;3386eb4b-9e4d-450d-8d90-e62ff85ec01c&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;3386eb4b-9e4d-450d-8d90-e62ff85ec01c&quot;)&gt; element input value is Delhi
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;404a0166-f74a-49f6-968c-c822c1113161&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;404a0166-f74a-49f6-968c-c822c1113161&quot;)&gt; element input value is Keshav
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;d94645df-9cdd-4661-b633-6a947d78e50d&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;72d45692793a1de3cd955cdf3460889f&quot;, element=&quot;d94645df-9cdd-4661-b633-6a947d78e50d&quot;)&gt; element input value is asdf1234
+INFO     test_Dummy_Registration:test_Dummy_Registration.py:25 ********** Test Do Sign up successfully executed **********<br/> ----------------------------Captured stdout teardown---------------------------- <br/>all windows closed successfully
+<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Test_Cases/test_Dummy_Registration.py::Test_Dummy_Registration::test_doSignUp[chrome-Rahul-2123456789.0-Keshav@asdf.com-India-Delhi-Keshav-asdf1234]</td>
+          <td class="col-duration">9.90</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>User Navigated to https://www.way2automation.com/
+Implicit wait set to 10
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 10<br/> ------------------------------Captured stdout call------------------------------ <br/>&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;39be7556-849d-428a-8c4b-1b7d3e81dc4d&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;39be7556-849d-428a-8c4b-1b7d3e81dc4d&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;39be7556-849d-428a-8c4b-1b7d3e81dc4d&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;39be7556-849d-428a-8c4b-1b7d3e81dc4d&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;39be7556-849d-428a-8c4b-1b7d3e81dc4d&quot;)&gt; moved to element
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;bef2611e-8e9f-4a0d-b5d0-66a90611d78c&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;bef2611e-8e9f-4a0d-b5d0-66a90611d78c&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;bef2611e-8e9f-4a0d-b5d0-66a90611d78c&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;bef2611e-8e9f-4a0d-b5d0-66a90611d78c&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;bef2611e-8e9f-4a0d-b5d0-66a90611d78c&quot;)&gt; clicked successfully
+Window full screened successfully
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b987ee43-0a25-4458-a23d-28ed72f76c85&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b987ee43-0a25-4458-a23d-28ed72f76c85&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b987ee43-0a25-4458-a23d-28ed72f76c85&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b987ee43-0a25-4458-a23d-28ed72f76c85&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b987ee43-0a25-4458-a23d-28ed72f76c85&quot;)&gt; element input value is Rahul
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;0a909911-adad-4029-887a-78a6aaa24aa3&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;0a909911-adad-4029-887a-78a6aaa24aa3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;0a909911-adad-4029-887a-78a6aaa24aa3&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;0a909911-adad-4029-887a-78a6aaa24aa3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;0a909911-adad-4029-887a-78a6aaa24aa3&quot;)&gt; element input value is 2123456789.0
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;181d682d-6de6-4c3c-84db-3ed608febe6e&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;181d682d-6de6-4c3c-84db-3ed608febe6e&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;181d682d-6de6-4c3c-84db-3ed608febe6e&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;181d682d-6de6-4c3c-84db-3ed608febe6e&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;181d682d-6de6-4c3c-84db-3ed608febe6e&quot;)&gt; element input value is Keshav@asdf.com
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;2c280545-a54d-450b-96ee-c11e8425aba3&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;2c280545-a54d-450b-96ee-c11e8425aba3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;2c280545-a54d-450b-96ee-c11e8425aba3&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;2c280545-a54d-450b-96ee-c11e8425aba3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;2c280545-a54d-450b-96ee-c11e8425aba3&quot;)&gt; dropdown selected successfully via value
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b3f3d870-32f2-4ef3-875c-c66495dc106e&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b3f3d870-32f2-4ef3-875c-c66495dc106e&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b3f3d870-32f2-4ef3-875c-c66495dc106e&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b3f3d870-32f2-4ef3-875c-c66495dc106e&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b3f3d870-32f2-4ef3-875c-c66495dc106e&quot;)&gt; element input value is Delhi
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b3f3d870-32f2-4ef3-875c-c66495dc106e&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7967e1e6-e698-4648-bb80-a29fc1807976&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7967e1e6-e698-4648-bb80-a29fc1807976&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7967e1e6-e698-4648-bb80-a29fc1807976&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7967e1e6-e698-4648-bb80-a29fc1807976&quot;)&gt; element input value is Keshav
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b3f3d870-32f2-4ef3-875c-c66495dc106e&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7ab4c984-f06a-44f6-9307-3d14ea306aed&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7ab4c984-f06a-44f6-9307-3d14ea306aed&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7ab4c984-f06a-44f6-9307-3d14ea306aed&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7ab4c984-f06a-44f6-9307-3d14ea306aed&quot;)&gt; element input value is asdf1234
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     test_Dummy_Registration:test_Dummy_Registration.py:22 ********** Test Do Sign up started **********
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;39be7556-849d-428a-8c4b-1b7d3e81dc4d&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:504 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;39be7556-849d-428a-8c4b-1b7d3e81dc4d&quot;)&gt; moved to element
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;bef2611e-8e9f-4a0d-b5d0-66a90611d78c&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:57 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;bef2611e-8e9f-4a0d-b5d0-66a90611d78c&quot;)&gt; clicked successfully
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:75 Window full screened successfully
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b987ee43-0a25-4458-a23d-28ed72f76c85&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b987ee43-0a25-4458-a23d-28ed72f76c85&quot;)&gt; element input value is Rahul
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;0a909911-adad-4029-887a-78a6aaa24aa3&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;0a909911-adad-4029-887a-78a6aaa24aa3&quot;)&gt; element input value is 2123456789.0
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;181d682d-6de6-4c3c-84db-3ed608febe6e&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;181d682d-6de6-4c3c-84db-3ed608febe6e&quot;)&gt; element input value is Keshav@asdf.com
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;2c280545-a54d-450b-96ee-c11e8425aba3&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:103 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;2c280545-a54d-450b-96ee-c11e8425aba3&quot;)&gt; dropdown selected successfully via value
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b3f3d870-32f2-4ef3-875c-c66495dc106e&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;b3f3d870-32f2-4ef3-875c-c66495dc106e&quot;)&gt; element input value is Delhi
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7967e1e6-e698-4648-bb80-a29fc1807976&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7967e1e6-e698-4648-bb80-a29fc1807976&quot;)&gt; element input value is Keshav
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7ab4c984-f06a-44f6-9307-3d14ea306aed&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;d00122427004d1a05b10fcb9aeecedf1&quot;, element=&quot;7ab4c984-f06a-44f6-9307-3d14ea306aed&quot;)&gt; element input value is asdf1234
+INFO     test_Dummy_Registration:test_Dummy_Registration.py:25 ********** Test Do Sign up successfully executed **********<br/> ----------------------------Captured stdout teardown---------------------------- <br/>all windows closed successfully
+<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Test_Cases/test_Dummy_Registration.py::Test_Dummy_Registration::test_doSignUp[chrome-Arun-3123456789.0-Keshav@asdf.com-India-Delhi-Keshav-asdf1234]</td>
+          <td class="col-duration">9.88</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>User Navigated to https://www.way2automation.com/
+Implicit wait set to 10
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 10<br/> ------------------------------Captured stdout call------------------------------ <br/>&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e8856aa6-bea0-4ce2-8e33-e09d98b4d80e&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e8856aa6-bea0-4ce2-8e33-e09d98b4d80e&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e8856aa6-bea0-4ce2-8e33-e09d98b4d80e&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e8856aa6-bea0-4ce2-8e33-e09d98b4d80e&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e8856aa6-bea0-4ce2-8e33-e09d98b4d80e&quot;)&gt; moved to element
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;b73859a0-0844-407f-a3db-e3e7d372d58d&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;b73859a0-0844-407f-a3db-e3e7d372d58d&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;b73859a0-0844-407f-a3db-e3e7d372d58d&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;b73859a0-0844-407f-a3db-e3e7d372d58d&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;b73859a0-0844-407f-a3db-e3e7d372d58d&quot;)&gt; clicked successfully
+Window full screened successfully
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;afcf1942-1b61-4e33-a7f0-3ed523f8d270&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;afcf1942-1b61-4e33-a7f0-3ed523f8d270&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;afcf1942-1b61-4e33-a7f0-3ed523f8d270&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;afcf1942-1b61-4e33-a7f0-3ed523f8d270&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;afcf1942-1b61-4e33-a7f0-3ed523f8d270&quot;)&gt; element input value is Arun
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;2b570444-7b92-4e72-8d12-ce989debd8f5&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;2b570444-7b92-4e72-8d12-ce989debd8f5&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;2b570444-7b92-4e72-8d12-ce989debd8f5&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;2b570444-7b92-4e72-8d12-ce989debd8f5&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;2b570444-7b92-4e72-8d12-ce989debd8f5&quot;)&gt; element input value is 3123456789.0
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;fd7c7282-5bf0-44ba-84a7-6936ef6c3ea9&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;fd7c7282-5bf0-44ba-84a7-6936ef6c3ea9&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;fd7c7282-5bf0-44ba-84a7-6936ef6c3ea9&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;fd7c7282-5bf0-44ba-84a7-6936ef6c3ea9&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;fd7c7282-5bf0-44ba-84a7-6936ef6c3ea9&quot;)&gt; element input value is Keshav@asdf.com
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;c5a1250c-bfa5-4dfd-9186-4f610f862e54&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;c5a1250c-bfa5-4dfd-9186-4f610f862e54&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;c5a1250c-bfa5-4dfd-9186-4f610f862e54&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;c5a1250c-bfa5-4dfd-9186-4f610f862e54&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;c5a1250c-bfa5-4dfd-9186-4f610f862e54&quot;)&gt; dropdown selected successfully via value
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e64d31f1-5c83-4bd4-af17-274e0f346c5d&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e64d31f1-5c83-4bd4-af17-274e0f346c5d&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e64d31f1-5c83-4bd4-af17-274e0f346c5d&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e64d31f1-5c83-4bd4-af17-274e0f346c5d&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e64d31f1-5c83-4bd4-af17-274e0f346c5d&quot;)&gt; element input value is Delhi
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e64d31f1-5c83-4bd4-af17-274e0f346c5d&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;af8cff38-4b75-4a2a-ae08-5f51c9fd8bba&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;af8cff38-4b75-4a2a-ae08-5f51c9fd8bba&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;af8cff38-4b75-4a2a-ae08-5f51c9fd8bba&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;af8cff38-4b75-4a2a-ae08-5f51c9fd8bba&quot;)&gt; element input value is Keshav
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e64d31f1-5c83-4bd4-af17-274e0f346c5d&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;5dc2a828-e676-4716-b6ed-b5535a3bedb3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;5dc2a828-e676-4716-b6ed-b5535a3bedb3&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;5dc2a828-e676-4716-b6ed-b5535a3bedb3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;5dc2a828-e676-4716-b6ed-b5535a3bedb3&quot;)&gt; element input value is asdf1234
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     test_Dummy_Registration:test_Dummy_Registration.py:22 ********** Test Do Sign up started **********
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e8856aa6-bea0-4ce2-8e33-e09d98b4d80e&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:504 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e8856aa6-bea0-4ce2-8e33-e09d98b4d80e&quot;)&gt; moved to element
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;b73859a0-0844-407f-a3db-e3e7d372d58d&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:57 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;b73859a0-0844-407f-a3db-e3e7d372d58d&quot;)&gt; clicked successfully
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:75 Window full screened successfully
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;afcf1942-1b61-4e33-a7f0-3ed523f8d270&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;afcf1942-1b61-4e33-a7f0-3ed523f8d270&quot;)&gt; element input value is Arun
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;2b570444-7b92-4e72-8d12-ce989debd8f5&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;2b570444-7b92-4e72-8d12-ce989debd8f5&quot;)&gt; element input value is 3123456789.0
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;fd7c7282-5bf0-44ba-84a7-6936ef6c3ea9&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;fd7c7282-5bf0-44ba-84a7-6936ef6c3ea9&quot;)&gt; element input value is Keshav@asdf.com
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;c5a1250c-bfa5-4dfd-9186-4f610f862e54&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:103 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;c5a1250c-bfa5-4dfd-9186-4f610f862e54&quot;)&gt; dropdown selected successfully via value
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e64d31f1-5c83-4bd4-af17-274e0f346c5d&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;e64d31f1-5c83-4bd4-af17-274e0f346c5d&quot;)&gt; element input value is Delhi
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;af8cff38-4b75-4a2a-ae08-5f51c9fd8bba&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;af8cff38-4b75-4a2a-ae08-5f51c9fd8bba&quot;)&gt; element input value is Keshav
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;5dc2a828-e676-4716-b6ed-b5535a3bedb3&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;a343271eacee924d93429beb97cd52c0&quot;, element=&quot;5dc2a828-e676-4716-b6ed-b5535a3bedb3&quot;)&gt; element input value is asdf1234
+INFO     test_Dummy_Registration:test_Dummy_Registration.py:25 ********** Test Do Sign up successfully executed **********<br/> ----------------------------Captured stdout teardown---------------------------- <br/>all windows closed successfully
+<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Test_Cases/test_Dummy_Registration.py::Test_Dummy_Registration::test_doSignUp[chrome-Mukul-4123456789.0-Keshav@asdf.com-India-Delhi-Keshav-asdf1234]</td>
+          <td class="col-duration">10.18</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>User Navigated to https://www.way2automation.com/
+Implicit wait set to 10
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 10<br/> ------------------------------Captured stdout call------------------------------ <br/>&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;07dc6ba2-990f-4dd5-b7c4-662943c9ed7d&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;07dc6ba2-990f-4dd5-b7c4-662943c9ed7d&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;07dc6ba2-990f-4dd5-b7c4-662943c9ed7d&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;07dc6ba2-990f-4dd5-b7c4-662943c9ed7d&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;07dc6ba2-990f-4dd5-b7c4-662943c9ed7d&quot;)&gt; moved to element
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;c19e24fb-d7cc-40eb-8d14-ca1669bf2f57&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;c19e24fb-d7cc-40eb-8d14-ca1669bf2f57&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;c19e24fb-d7cc-40eb-8d14-ca1669bf2f57&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;c19e24fb-d7cc-40eb-8d14-ca1669bf2f57&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;c19e24fb-d7cc-40eb-8d14-ca1669bf2f57&quot;)&gt; clicked successfully
+Window full screened successfully
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;e1a19d1f-354a-4bf7-b0b3-25e1f6b90198&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;e1a19d1f-354a-4bf7-b0b3-25e1f6b90198&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;e1a19d1f-354a-4bf7-b0b3-25e1f6b90198&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;e1a19d1f-354a-4bf7-b0b3-25e1f6b90198&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;e1a19d1f-354a-4bf7-b0b3-25e1f6b90198&quot;)&gt; element input value is Mukul
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3f2293db-717d-4c0b-bb47-23ddd55fc563&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3f2293db-717d-4c0b-bb47-23ddd55fc563&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3f2293db-717d-4c0b-bb47-23ddd55fc563&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3f2293db-717d-4c0b-bb47-23ddd55fc563&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3f2293db-717d-4c0b-bb47-23ddd55fc563&quot;)&gt; element input value is 4123456789.0
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;37bd122f-bb67-4555-af46-b61d89253082&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;37bd122f-bb67-4555-af46-b61d89253082&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;37bd122f-bb67-4555-af46-b61d89253082&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;37bd122f-bb67-4555-af46-b61d89253082&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;37bd122f-bb67-4555-af46-b61d89253082&quot;)&gt; element input value is Keshav@asdf.com
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;2c93b1bd-e3ce-4e62-908a-80ab983c5a32&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;2c93b1bd-e3ce-4e62-908a-80ab983c5a32&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;2c93b1bd-e3ce-4e62-908a-80ab983c5a32&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;2c93b1bd-e3ce-4e62-908a-80ab983c5a32&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;2c93b1bd-e3ce-4e62-908a-80ab983c5a32&quot;)&gt; dropdown selected successfully via value
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3d08ce5c-36f0-4298-94d8-62ad5d3ee0e5&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3d08ce5c-36f0-4298-94d8-62ad5d3ee0e5&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3d08ce5c-36f0-4298-94d8-62ad5d3ee0e5&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3d08ce5c-36f0-4298-94d8-62ad5d3ee0e5&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3d08ce5c-36f0-4298-94d8-62ad5d3ee0e5&quot;)&gt; element input value is Delhi
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3d08ce5c-36f0-4298-94d8-62ad5d3ee0e5&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;4719bfaf-283e-409d-8b1f-e8f3e67bf679&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;4719bfaf-283e-409d-8b1f-e8f3e67bf679&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;4719bfaf-283e-409d-8b1f-e8f3e67bf679&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;4719bfaf-283e-409d-8b1f-e8f3e67bf679&quot;)&gt; element input value is Keshav
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3d08ce5c-36f0-4298-94d8-62ad5d3ee0e5&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3b36e22c-7672-4236-bbe3-7be542b36734&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3b36e22c-7672-4236-bbe3-7be542b36734&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3b36e22c-7672-4236-bbe3-7be542b36734&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3b36e22c-7672-4236-bbe3-7be542b36734&quot;)&gt; element input value is asdf1234
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     test_Dummy_Registration:test_Dummy_Registration.py:22 ********** Test Do Sign up started **********
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;07dc6ba2-990f-4dd5-b7c4-662943c9ed7d&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:504 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;07dc6ba2-990f-4dd5-b7c4-662943c9ed7d&quot;)&gt; moved to element
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;c19e24fb-d7cc-40eb-8d14-ca1669bf2f57&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:57 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;c19e24fb-d7cc-40eb-8d14-ca1669bf2f57&quot;)&gt; clicked successfully
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:75 Window full screened successfully
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;e1a19d1f-354a-4bf7-b0b3-25e1f6b90198&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;e1a19d1f-354a-4bf7-b0b3-25e1f6b90198&quot;)&gt; element input value is Mukul
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3f2293db-717d-4c0b-bb47-23ddd55fc563&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3f2293db-717d-4c0b-bb47-23ddd55fc563&quot;)&gt; element input value is 4123456789.0
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;37bd122f-bb67-4555-af46-b61d89253082&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;37bd122f-bb67-4555-af46-b61d89253082&quot;)&gt; element input value is Keshav@asdf.com
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;2c93b1bd-e3ce-4e62-908a-80ab983c5a32&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:103 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;2c93b1bd-e3ce-4e62-908a-80ab983c5a32&quot;)&gt; dropdown selected successfully via value
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3d08ce5c-36f0-4298-94d8-62ad5d3ee0e5&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3d08ce5c-36f0-4298-94d8-62ad5d3ee0e5&quot;)&gt; element input value is Delhi
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;4719bfaf-283e-409d-8b1f-e8f3e67bf679&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;4719bfaf-283e-409d-8b1f-e8f3e67bf679&quot;)&gt; element input value is Keshav
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3b36e22c-7672-4236-bbe3-7be542b36734&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;43c1993545bab769550cf3e431ba99b3&quot;, element=&quot;3b36e22c-7672-4236-bbe3-7be542b36734&quot;)&gt; element input value is asdf1234
+INFO     test_Dummy_Registration:test_Dummy_Registration.py:25 ********** Test Do Sign up successfully executed **********<br/> ----------------------------Captured stdout teardown---------------------------- <br/>all windows closed successfully
+<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Test_Cases/test_Dummy_Registration.py::Test_Dummy_Registration::test_doSignUp[firefox-Keshav-1123456789.0-Keshav@asdf.com-India-Delhi-Keshav-asdf1234]</td>
+          <td class="col-duration">13.61</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>User Navigated to https://www.way2automation.com/
+Implicit wait set to 10
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 10<br/> ------------------------------Captured stdout call------------------------------ <br/>&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;b51c6431-5993-4275-b301-5e333285d68c&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;b51c6431-5993-4275-b301-5e333285d68c&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;b51c6431-5993-4275-b301-5e333285d68c&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;b51c6431-5993-4275-b301-5e333285d68c&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;b51c6431-5993-4275-b301-5e333285d68c&quot;)&gt; moved to element
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;260029d4-3cb9-4cd3-9c3b-31d6ec3bb73c&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;260029d4-3cb9-4cd3-9c3b-31d6ec3bb73c&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;260029d4-3cb9-4cd3-9c3b-31d6ec3bb73c&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;260029d4-3cb9-4cd3-9c3b-31d6ec3bb73c&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;260029d4-3cb9-4cd3-9c3b-31d6ec3bb73c&quot;)&gt; clicked successfully
+Window full screened successfully
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;5492d2cf-db43-4ccf-bcde-28d3ffe0436a&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;5492d2cf-db43-4ccf-bcde-28d3ffe0436a&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;5492d2cf-db43-4ccf-bcde-28d3ffe0436a&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;5492d2cf-db43-4ccf-bcde-28d3ffe0436a&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;5492d2cf-db43-4ccf-bcde-28d3ffe0436a&quot;)&gt; element input value is Keshav
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;89bfd52d-2b19-480e-bcfe-6c93ec1b672b&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;89bfd52d-2b19-480e-bcfe-6c93ec1b672b&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;89bfd52d-2b19-480e-bcfe-6c93ec1b672b&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;89bfd52d-2b19-480e-bcfe-6c93ec1b672b&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;89bfd52d-2b19-480e-bcfe-6c93ec1b672b&quot;)&gt; element input value is 1123456789.0
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;998310c5-e461-4dc7-baeb-a3fafe4d130f&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;998310c5-e461-4dc7-baeb-a3fafe4d130f&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;998310c5-e461-4dc7-baeb-a3fafe4d130f&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;998310c5-e461-4dc7-baeb-a3fafe4d130f&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;998310c5-e461-4dc7-baeb-a3fafe4d130f&quot;)&gt; element input value is Keshav@asdf.com
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;964aa9fd-2e85-44aa-91b7-5afe934c5fc3&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;964aa9fd-2e85-44aa-91b7-5afe934c5fc3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;964aa9fd-2e85-44aa-91b7-5afe934c5fc3&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;964aa9fd-2e85-44aa-91b7-5afe934c5fc3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;964aa9fd-2e85-44aa-91b7-5afe934c5fc3&quot;)&gt; dropdown selected successfully via value
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;2092da6e-fadc-480c-94e8-c784a7dc17b0&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;2092da6e-fadc-480c-94e8-c784a7dc17b0&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;2092da6e-fadc-480c-94e8-c784a7dc17b0&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;2092da6e-fadc-480c-94e8-c784a7dc17b0&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;2092da6e-fadc-480c-94e8-c784a7dc17b0&quot;)&gt; element input value is Delhi
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;2092da6e-fadc-480c-94e8-c784a7dc17b0&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f1ab8c18-6e4f-4eca-970d-09e3c3555316&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f1ab8c18-6e4f-4eca-970d-09e3c3555316&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f1ab8c18-6e4f-4eca-970d-09e3c3555316&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f1ab8c18-6e4f-4eca-970d-09e3c3555316&quot;)&gt; element input value is Keshav
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;2092da6e-fadc-480c-94e8-c784a7dc17b0&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f5a05db9-a7bd-4a44-afbc-4b15602d000f&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f5a05db9-a7bd-4a44-afbc-4b15602d000f&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f5a05db9-a7bd-4a44-afbc-4b15602d000f&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f5a05db9-a7bd-4a44-afbc-4b15602d000f&quot;)&gt; element input value is asdf1234
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     test_Dummy_Registration:test_Dummy_Registration.py:22 ********** Test Do Sign up started **********
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;b51c6431-5993-4275-b301-5e333285d68c&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:504 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;b51c6431-5993-4275-b301-5e333285d68c&quot;)&gt; moved to element
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;260029d4-3cb9-4cd3-9c3b-31d6ec3bb73c&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:57 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;260029d4-3cb9-4cd3-9c3b-31d6ec3bb73c&quot;)&gt; clicked successfully
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:75 Window full screened successfully
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;5492d2cf-db43-4ccf-bcde-28d3ffe0436a&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;5492d2cf-db43-4ccf-bcde-28d3ffe0436a&quot;)&gt; element input value is Keshav
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;89bfd52d-2b19-480e-bcfe-6c93ec1b672b&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;89bfd52d-2b19-480e-bcfe-6c93ec1b672b&quot;)&gt; element input value is 1123456789.0
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;998310c5-e461-4dc7-baeb-a3fafe4d130f&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;998310c5-e461-4dc7-baeb-a3fafe4d130f&quot;)&gt; element input value is Keshav@asdf.com
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;964aa9fd-2e85-44aa-91b7-5afe934c5fc3&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:103 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;964aa9fd-2e85-44aa-91b7-5afe934c5fc3&quot;)&gt; dropdown selected successfully via value
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;2092da6e-fadc-480c-94e8-c784a7dc17b0&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;2092da6e-fadc-480c-94e8-c784a7dc17b0&quot;)&gt; element input value is Delhi
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f1ab8c18-6e4f-4eca-970d-09e3c3555316&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f1ab8c18-6e4f-4eca-970d-09e3c3555316&quot;)&gt; element input value is Keshav
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f5a05db9-a7bd-4a44-afbc-4b15602d000f&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;ac635223-210b-4c4e-b71a-7aff58bdf52e&quot;, element=&quot;f5a05db9-a7bd-4a44-afbc-4b15602d000f&quot;)&gt; element input value is asdf1234
+INFO     test_Dummy_Registration:test_Dummy_Registration.py:25 ********** Test Do Sign up successfully executed **********<br/> ----------------------------Captured stdout teardown---------------------------- <br/>all windows closed successfully
+<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Test_Cases/test_Dummy_Registration.py::Test_Dummy_Registration::test_doSignUp[firefox-Rahul-2123456789.0-Keshav@asdf.com-India-Delhi-Keshav-asdf1234]</td>
+          <td class="col-duration">13.42</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>User Navigated to https://www.way2automation.com/
+Implicit wait set to 10
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 10<br/> ------------------------------Captured stdout call------------------------------ <br/>&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;06eb57c7-1ef7-404b-b7b1-be55a7f1fd8a&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;06eb57c7-1ef7-404b-b7b1-be55a7f1fd8a&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;06eb57c7-1ef7-404b-b7b1-be55a7f1fd8a&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;06eb57c7-1ef7-404b-b7b1-be55a7f1fd8a&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;06eb57c7-1ef7-404b-b7b1-be55a7f1fd8a&quot;)&gt; moved to element
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;32869e31-9e66-403c-9ba3-c7f6baca78d5&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;32869e31-9e66-403c-9ba3-c7f6baca78d5&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;32869e31-9e66-403c-9ba3-c7f6baca78d5&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;32869e31-9e66-403c-9ba3-c7f6baca78d5&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;32869e31-9e66-403c-9ba3-c7f6baca78d5&quot;)&gt; clicked successfully
+Window full screened successfully
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;43d84acb-1b48-4022-a503-e91acb78128f&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;43d84acb-1b48-4022-a503-e91acb78128f&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;43d84acb-1b48-4022-a503-e91acb78128f&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;43d84acb-1b48-4022-a503-e91acb78128f&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;43d84acb-1b48-4022-a503-e91acb78128f&quot;)&gt; element input value is Rahul
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a8a9b09f-ef90-4164-affc-64aab6c0de22&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a8a9b09f-ef90-4164-affc-64aab6c0de22&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a8a9b09f-ef90-4164-affc-64aab6c0de22&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a8a9b09f-ef90-4164-affc-64aab6c0de22&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a8a9b09f-ef90-4164-affc-64aab6c0de22&quot;)&gt; element input value is 2123456789.0
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;1074cd0e-3a9b-4f86-bce9-93096dbe8f0e&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;1074cd0e-3a9b-4f86-bce9-93096dbe8f0e&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;1074cd0e-3a9b-4f86-bce9-93096dbe8f0e&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;1074cd0e-3a9b-4f86-bce9-93096dbe8f0e&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;1074cd0e-3a9b-4f86-bce9-93096dbe8f0e&quot;)&gt; element input value is Keshav@asdf.com
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;2a79934a-6282-4fdf-8dd3-585655c92e37&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;2a79934a-6282-4fdf-8dd3-585655c92e37&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;2a79934a-6282-4fdf-8dd3-585655c92e37&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;2a79934a-6282-4fdf-8dd3-585655c92e37&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;2a79934a-6282-4fdf-8dd3-585655c92e37&quot;)&gt; dropdown selected successfully via value
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;f522ebd6-a699-41b1-845a-80251c730e92&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;f522ebd6-a699-41b1-845a-80251c730e92&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;f522ebd6-a699-41b1-845a-80251c730e92&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;f522ebd6-a699-41b1-845a-80251c730e92&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;f522ebd6-a699-41b1-845a-80251c730e92&quot;)&gt; element input value is Delhi
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;f522ebd6-a699-41b1-845a-80251c730e92&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;94930baa-a59e-4da3-84bf-91c8ac3632b3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;94930baa-a59e-4da3-84bf-91c8ac3632b3&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;94930baa-a59e-4da3-84bf-91c8ac3632b3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;94930baa-a59e-4da3-84bf-91c8ac3632b3&quot;)&gt; element input value is Keshav
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;f522ebd6-a699-41b1-845a-80251c730e92&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a446e6d1-4252-4fb6-b271-8622d84b12fe&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a446e6d1-4252-4fb6-b271-8622d84b12fe&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a446e6d1-4252-4fb6-b271-8622d84b12fe&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a446e6d1-4252-4fb6-b271-8622d84b12fe&quot;)&gt; element input value is asdf1234
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     test_Dummy_Registration:test_Dummy_Registration.py:22 ********** Test Do Sign up started **********
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;06eb57c7-1ef7-404b-b7b1-be55a7f1fd8a&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:504 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;06eb57c7-1ef7-404b-b7b1-be55a7f1fd8a&quot;)&gt; moved to element
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;32869e31-9e66-403c-9ba3-c7f6baca78d5&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:57 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;32869e31-9e66-403c-9ba3-c7f6baca78d5&quot;)&gt; clicked successfully
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:75 Window full screened successfully
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;43d84acb-1b48-4022-a503-e91acb78128f&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;43d84acb-1b48-4022-a503-e91acb78128f&quot;)&gt; element input value is Rahul
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a8a9b09f-ef90-4164-affc-64aab6c0de22&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a8a9b09f-ef90-4164-affc-64aab6c0de22&quot;)&gt; element input value is 2123456789.0
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;1074cd0e-3a9b-4f86-bce9-93096dbe8f0e&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;1074cd0e-3a9b-4f86-bce9-93096dbe8f0e&quot;)&gt; element input value is Keshav@asdf.com
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;2a79934a-6282-4fdf-8dd3-585655c92e37&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:103 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;2a79934a-6282-4fdf-8dd3-585655c92e37&quot;)&gt; dropdown selected successfully via value
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;f522ebd6-a699-41b1-845a-80251c730e92&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;f522ebd6-a699-41b1-845a-80251c730e92&quot;)&gt; element input value is Delhi
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;94930baa-a59e-4da3-84bf-91c8ac3632b3&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;94930baa-a59e-4da3-84bf-91c8ac3632b3&quot;)&gt; element input value is Keshav
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a446e6d1-4252-4fb6-b271-8622d84b12fe&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;1d5cf114-e00c-4bf2-8ae9-3ba8bc6b8e6b&quot;, element=&quot;a446e6d1-4252-4fb6-b271-8622d84b12fe&quot;)&gt; element input value is asdf1234
+INFO     test_Dummy_Registration:test_Dummy_Registration.py:25 ********** Test Do Sign up successfully executed **********<br/> ----------------------------Captured stdout teardown---------------------------- <br/>all windows closed successfully
+<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Test_Cases/test_Dummy_Registration.py::Test_Dummy_Registration::test_doSignUp[firefox-Arun-3123456789.0-Keshav@asdf.com-India-Delhi-Keshav-asdf1234]</td>
+          <td class="col-duration">13.41</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>User Navigated to https://www.way2automation.com/
+Implicit wait set to 10
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 10<br/> ------------------------------Captured stdout call------------------------------ <br/>&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;06f9c787-9ff4-4e29-972a-107fd8bd0d34&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;06f9c787-9ff4-4e29-972a-107fd8bd0d34&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;06f9c787-9ff4-4e29-972a-107fd8bd0d34&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;06f9c787-9ff4-4e29-972a-107fd8bd0d34&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;06f9c787-9ff4-4e29-972a-107fd8bd0d34&quot;)&gt; moved to element
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4f58b164-c9f0-460b-9a4e-14373ac98f14&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4f58b164-c9f0-460b-9a4e-14373ac98f14&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4f58b164-c9f0-460b-9a4e-14373ac98f14&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4f58b164-c9f0-460b-9a4e-14373ac98f14&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4f58b164-c9f0-460b-9a4e-14373ac98f14&quot;)&gt; clicked successfully
+Window full screened successfully
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;2b81d089-2660-4946-ad68-45f4ba11f5d0&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;2b81d089-2660-4946-ad68-45f4ba11f5d0&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;2b81d089-2660-4946-ad68-45f4ba11f5d0&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;2b81d089-2660-4946-ad68-45f4ba11f5d0&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;2b81d089-2660-4946-ad68-45f4ba11f5d0&quot;)&gt; element input value is Arun
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;c7cff46e-ab19-4535-b6b9-072ba4055c5a&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;c7cff46e-ab19-4535-b6b9-072ba4055c5a&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;c7cff46e-ab19-4535-b6b9-072ba4055c5a&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;c7cff46e-ab19-4535-b6b9-072ba4055c5a&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;c7cff46e-ab19-4535-b6b9-072ba4055c5a&quot;)&gt; element input value is 3123456789.0
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;e9d21c21-3741-4585-9c61-8b8130fe76c1&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;e9d21c21-3741-4585-9c61-8b8130fe76c1&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;e9d21c21-3741-4585-9c61-8b8130fe76c1&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;e9d21c21-3741-4585-9c61-8b8130fe76c1&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;e9d21c21-3741-4585-9c61-8b8130fe76c1&quot;)&gt; element input value is Keshav@asdf.com
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;808a2043-4ec6-4d34-a109-bb00e4b5daa3&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;808a2043-4ec6-4d34-a109-bb00e4b5daa3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;808a2043-4ec6-4d34-a109-bb00e4b5daa3&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;808a2043-4ec6-4d34-a109-bb00e4b5daa3&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;808a2043-4ec6-4d34-a109-bb00e4b5daa3&quot;)&gt; dropdown selected successfully via value
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4724fa0d-83b6-4f2c-bc35-29d2fe8a7990&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4724fa0d-83b6-4f2c-bc35-29d2fe8a7990&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4724fa0d-83b6-4f2c-bc35-29d2fe8a7990&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4724fa0d-83b6-4f2c-bc35-29d2fe8a7990&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4724fa0d-83b6-4f2c-bc35-29d2fe8a7990&quot;)&gt; element input value is Delhi
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4724fa0d-83b6-4f2c-bc35-29d2fe8a7990&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;1687df55-0200-4f32-b268-c42d180cb197&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;1687df55-0200-4f32-b268-c42d180cb197&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;1687df55-0200-4f32-b268-c42d180cb197&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;1687df55-0200-4f32-b268-c42d180cb197&quot;)&gt; element input value is Keshav
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4724fa0d-83b6-4f2c-bc35-29d2fe8a7990&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;f19e445c-4dec-4995-8117-0714ff3cf6b7&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;f19e445c-4dec-4995-8117-0714ff3cf6b7&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;f19e445c-4dec-4995-8117-0714ff3cf6b7&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;f19e445c-4dec-4995-8117-0714ff3cf6b7&quot;)&gt; element input value is asdf1234
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     test_Dummy_Registration:test_Dummy_Registration.py:22 ********** Test Do Sign up started **********
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;06f9c787-9ff4-4e29-972a-107fd8bd0d34&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:504 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;06f9c787-9ff4-4e29-972a-107fd8bd0d34&quot;)&gt; moved to element
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4f58b164-c9f0-460b-9a4e-14373ac98f14&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:57 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4f58b164-c9f0-460b-9a4e-14373ac98f14&quot;)&gt; clicked successfully
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:75 Window full screened successfully
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;2b81d089-2660-4946-ad68-45f4ba11f5d0&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;2b81d089-2660-4946-ad68-45f4ba11f5d0&quot;)&gt; element input value is Arun
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;c7cff46e-ab19-4535-b6b9-072ba4055c5a&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;c7cff46e-ab19-4535-b6b9-072ba4055c5a&quot;)&gt; element input value is 3123456789.0
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;e9d21c21-3741-4585-9c61-8b8130fe76c1&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;e9d21c21-3741-4585-9c61-8b8130fe76c1&quot;)&gt; element input value is Keshav@asdf.com
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;808a2043-4ec6-4d34-a109-bb00e4b5daa3&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:103 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;808a2043-4ec6-4d34-a109-bb00e4b5daa3&quot;)&gt; dropdown selected successfully via value
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4724fa0d-83b6-4f2c-bc35-29d2fe8a7990&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;4724fa0d-83b6-4f2c-bc35-29d2fe8a7990&quot;)&gt; element input value is Delhi
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;1687df55-0200-4f32-b268-c42d180cb197&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;1687df55-0200-4f32-b268-c42d180cb197&quot;)&gt; element input value is Keshav
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;f19e445c-4dec-4995-8117-0714ff3cf6b7&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;4ba88645-85bd-4cb2-998c-42a895dcbb7b&quot;, element=&quot;f19e445c-4dec-4995-8117-0714ff3cf6b7&quot;)&gt; element input value is asdf1234
+INFO     test_Dummy_Registration:test_Dummy_Registration.py:25 ********** Test Do Sign up successfully executed **********<br/> ----------------------------Captured stdout teardown---------------------------- <br/>all windows closed successfully
+<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">Test_Cases/test_Dummy_Registration.py::Test_Dummy_Registration::test_doSignUp[firefox-Mukul-4123456789.0-Keshav@asdf.com-India-Delhi-Keshav-asdf1234]</td>
+          <td class="col-duration">13.31</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>User Navigated to https://www.way2automation.com/
+Implicit wait set to 10
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:260 User Navigated to https://www.way2automation.com/
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:270 Implicit wait set to 10<br/> ------------------------------Captured stdout call------------------------------ <br/>&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;7b815b6c-7a4c-41e3-b934-87b2e1eead34&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;7b815b6c-7a4c-41e3-b934-87b2e1eead34&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;7b815b6c-7a4c-41e3-b934-87b2e1eead34&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;7b815b6c-7a4c-41e3-b934-87b2e1eead34&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;7b815b6c-7a4c-41e3-b934-87b2e1eead34&quot;)&gt; moved to element
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1113f7fc-76a9-4798-9941-321370d21185&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1113f7fc-76a9-4798-9941-321370d21185&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1113f7fc-76a9-4798-9941-321370d21185&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1113f7fc-76a9-4798-9941-321370d21185&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1113f7fc-76a9-4798-9941-321370d21185&quot;)&gt; clicked successfully
+Window full screened successfully
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b72ba974-e983-4833-81ca-c32878eb9248&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b72ba974-e983-4833-81ca-c32878eb9248&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b72ba974-e983-4833-81ca-c32878eb9248&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b72ba974-e983-4833-81ca-c32878eb9248&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b72ba974-e983-4833-81ca-c32878eb9248&quot;)&gt; element input value is Mukul
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1177b7a9-4ea6-4ea3-82e4-57e30833aa4a&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1177b7a9-4ea6-4ea3-82e4-57e30833aa4a&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1177b7a9-4ea6-4ea3-82e4-57e30833aa4a&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1177b7a9-4ea6-4ea3-82e4-57e30833aa4a&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1177b7a9-4ea6-4ea3-82e4-57e30833aa4a&quot;)&gt; element input value is 4123456789.0
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;06d392f4-7c8a-4dc4-9d72-87b607986298&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;06d392f4-7c8a-4dc4-9d72-87b607986298&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;06d392f4-7c8a-4dc4-9d72-87b607986298&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;06d392f4-7c8a-4dc4-9d72-87b607986298&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;06d392f4-7c8a-4dc4-9d72-87b607986298&quot;)&gt; element input value is Keshav@asdf.com
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;8285424e-fae5-4083-902c-5e96eb0083f1&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;8285424e-fae5-4083-902c-5e96eb0083f1&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;8285424e-fae5-4083-902c-5e96eb0083f1&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;8285424e-fae5-4083-902c-5e96eb0083f1&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;8285424e-fae5-4083-902c-5e96eb0083f1&quot;)&gt; dropdown selected successfully via value
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b9774ece-600c-45ab-857f-3c03aaa9cf5b&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b9774ece-600c-45ab-857f-3c03aaa9cf5b&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b9774ece-600c-45ab-857f-3c03aaa9cf5b&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b9774ece-600c-45ab-857f-3c03aaa9cf5b&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b9774ece-600c-45ab-857f-3c03aaa9cf5b&quot;)&gt; element input value is Delhi
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b9774ece-600c-45ab-857f-3c03aaa9cf5b&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;2763515a-985d-4992-a1d6-ee65938ac227&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;2763515a-985d-4992-a1d6-ee65938ac227&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;2763515a-985d-4992-a1d6-ee65938ac227&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;2763515a-985d-4992-a1d6-ee65938ac227&quot;)&gt; element input value is Keshav
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b9774ece-600c-45ab-857f-3c03aaa9cf5b&quot;)&gt; element is in focus and present and visible Now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;e20b81ad-f4cd-405b-a962-6b9770d23a5e&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;e20b81ad-f4cd-405b-a962-6b9770d23a5e&quot;)&gt; in focus now
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;e20b81ad-f4cd-405b-a962-6b9770d23a5e&quot;)&gt; element highlighted with border color red
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;e20b81ad-f4cd-405b-a962-6b9770d23a5e&quot;)&gt; element input value is asdf1234
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     test_Dummy_Registration:test_Dummy_Registration.py:22 ********** Test Do Sign up started **********
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;7b815b6c-7a4c-41e3-b934-87b2e1eead34&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:504 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;7b815b6c-7a4c-41e3-b934-87b2e1eead34&quot;)&gt; moved to element
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1113f7fc-76a9-4798-9941-321370d21185&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:57 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1113f7fc-76a9-4798-9941-321370d21185&quot;)&gt; clicked successfully
+INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:75 Window full screened successfully
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b72ba974-e983-4833-81ca-c32878eb9248&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b72ba974-e983-4833-81ca-c32878eb9248&quot;)&gt; element input value is Mukul
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1177b7a9-4ea6-4ea3-82e4-57e30833aa4a&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;1177b7a9-4ea6-4ea3-82e4-57e30833aa4a&quot;)&gt; element input value is 4123456789.0
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;06d392f4-7c8a-4dc4-9d72-87b607986298&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;06d392f4-7c8a-4dc4-9d72-87b607986298&quot;)&gt; element input value is Keshav@asdf.com
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;8285424e-fae5-4083-902c-5e96eb0083f1&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:103 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;8285424e-fae5-4083-902c-5e96eb0083f1&quot;)&gt; dropdown selected successfully via value
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b9774ece-600c-45ab-857f-3c03aaa9cf5b&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;b9774ece-600c-45ab-857f-3c03aaa9cf5b&quot;)&gt; element input value is Delhi
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;2763515a-985d-4992-a1d6-ee65938ac227&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;2763515a-985d-4992-a1d6-ee65938ac227&quot;)&gt; element input value is Keshav
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:29 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;e20b81ad-f4cd-405b-a962-6b9770d23a5e&quot;)&gt; in focus now
+INFO     Selenium_Operations.Element_Operations:Element_Operations.py:226 &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;e8fbd053-37b4-40ea-b0b8-6f395cd942fd&quot;, element=&quot;e20b81ad-f4cd-405b-a962-6b9770d23a5e&quot;)&gt; element input value is asdf1234
+INFO     test_Dummy_Registration:test_Dummy_Registration.py:25 ********** Test Do Sign up successfully executed **********<br/> ----------------------------Captured stdout teardown---------------------------- <br/>all windows closed successfully
+<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     Selenium_Operations.Driver_Operations:Driver_Operations.py:39 all windows closed successfully<br/></div></td></tr></tbody></table></body></html>
