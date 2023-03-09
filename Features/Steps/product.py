@@ -39,6 +39,6 @@ def step_impl(context, name):
     context.ele_ops.wait_until_element_present_visible("name__XPATH")
     context.ele_ops.find_element("name__XPATH")
     context.ele_ops.send_keys("name__XPATH", name)
-    time.sleep(2)
+    time.sleep(1)
 
 
