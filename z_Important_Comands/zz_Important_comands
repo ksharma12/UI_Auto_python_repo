@@ -248,6 +248,10 @@ https://www.youtube.com/watch?v=dxvnbKaszBw&ab_channel=BiggiDroid
 
 mac ==> command + shift + g (to find .ssh key)
 
+Push project from local to git :
+git pull --rebase
+git push
+
 Notepad++ regix :-
 105164 25   >>>>>> 105164_0025
 [ ]([0-9]+) to _$1   --do your first replace
