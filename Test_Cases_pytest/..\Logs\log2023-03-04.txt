@@ -1,0 +1,326 @@
+2023-03-04 21:40:49,612 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:40:49,613 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:40:52,218 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:40:54,832 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:40:54,835 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:40:56,158 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:40:58,690 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:40:58,692 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:40:59,940 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:41:02,616 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:41:02,618 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:41:03,941 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:41:07,973 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:41:08,000 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:41:08,662 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:41:11,951 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:41:11,960 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:41:12,618 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:41:16,010 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:41:16,022 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:41:16,680 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:41:20,316 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:41:20,319 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:41:21,017 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:41:24,573 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:41:24,575 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:41:25,896 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:41:29,886 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:41:29,894 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:41:30,571 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:42:43,538 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:42:43,540 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:42:45,847 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:42:48,481 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:42:48,483 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:43:23,018 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:43:23,020 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:43:24,378 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:43:26,949 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:43:26,950 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:43:28,284 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:43:30,973 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:43:30,974 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:43:32,124 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:43:34,685 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:43:34,687 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:43:36,060 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:43:40,037 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:43:40,052 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:43:40,718 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:43:44,028 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:43:44,037 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:43:44,689 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:43:48,168 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:43:48,184 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:43:48,793 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:43:52,118 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:43:52,120 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:43:52,762 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:43:55,375 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:43:55,377 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:43:56,694 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:43:59,901 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:43:59,911 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:44:00,544 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:45:10,754 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:45:10,756 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:45:12,238 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:45:16,005 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:45:16,031 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:45:16,700 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:46:52,119 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:46:52,121 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:46:53,874 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:46:57,778 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:46:57,799 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:46:58,479 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:48:43,211 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:48:43,213 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:48:44,608 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:48:48,461 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:48:48,466 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:48:49,116 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:49:57,789 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:49:57,792 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:49:59,402 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 21:50:03,256 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 21:50:03,270 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 21:50:03,978 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:00:25,580 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:00:25,582 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:00:27,308 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:00:31,224 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:00:31,229 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:00:31,920 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:02:37,360 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:02:37,362 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:02:38,856 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:02:42,407 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:02:42,429 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:02:43,073 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:05:05,151 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:05:05,152 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:05:05,154 - test_Selenium_4_Popup.py:[15] - [INFO] - ********** Test close selenium pop up started **********
+2023-03-04 22:05:26,460 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:19:35,508 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:19:35,509 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:19:35,513 - test_Dummy_Registration.py:[22] - [INFO] - ********** Test Do Sign up started **********
+2023-03-04 22:19:36,298 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="5e1a236d-570a-45ff-8a50-219ce89659a7")> in focus now
+2023-03-04 22:19:36,301 - Element_Operations.py:[504] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="5e1a236d-570a-45ff-8a50-219ce89659a7")> moved to element
+2023-03-04 22:19:42,380 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="787ef3da-36f2-40bb-aad9-096ae038b42b")> in focus now
+2023-03-04 22:19:46,873 - Element_Operations.py:[57] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="787ef3da-36f2-40bb-aad9-096ae038b42b")> clicked successfully
+2023-03-04 22:19:47,292 - Driver_Operations.py:[75] - [INFO] - Window full screened successfully
+2023-03-04 22:19:47,402 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="9528aab3-af27-43f7-b86f-e1132febde15")> in focus now
+2023-03-04 22:19:47,846 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="9528aab3-af27-43f7-b86f-e1132febde15")> element input value is Keshav
+2023-03-04 22:19:48,736 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="b076a33c-d781-4862-8433-59806f957eec")> in focus now
+2023-03-04 22:19:48,812 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="b076a33c-d781-4862-8433-59806f957eec")> element input value is 1123456789.0
+2023-03-04 22:19:48,835 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="eb4a85e9-58ff-43ed-9a4c-eedbc06b9924")> in focus now
+2023-03-04 22:19:49,027 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="eb4a85e9-58ff-43ed-9a4c-eedbc06b9924")> element input value is Keshav@asdf.com
+2023-03-04 22:19:49,048 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="868e30dc-96e8-47a6-8c90-382e027148cb")> in focus now
+2023-03-04 22:19:49,074 - Element_Operations.py:[103] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="868e30dc-96e8-47a6-8c90-382e027148cb")> dropdown selected successfully via value
+2023-03-04 22:19:49,095 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="27a46972-9f1a-466b-8de0-0b1854f97ee8")> in focus now
+2023-03-04 22:19:49,124 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="27a46972-9f1a-466b-8de0-0b1854f97ee8")> element input value is Delhi
+2023-03-04 22:19:49,146 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="83d14c4e-f407-4c6a-b538-34a69d78b289")> in focus now
+2023-03-04 22:19:49,178 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="83d14c4e-f407-4c6a-b538-34a69d78b289")> element input value is Keshav
+2023-03-04 22:19:49,200 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="3d798d3f-6d6d-4206-b27d-e4552cc25a57")> in focus now
+2023-03-04 22:19:49,237 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="fbf05c1be4f83556af3cc9fc652c7c11", element="3d798d3f-6d6d-4206-b27d-e4552cc25a57")> element input value is asdf1234
+2023-03-04 22:19:49,237 - test_Dummy_Registration.py:[25] - [INFO] - ********** Test Do Sign up successfully executed **********
+2023-03-04 22:19:49,309 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:19:52,102 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:19:52,104 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:19:52,107 - test_Dummy_Registration.py:[22] - [INFO] - ********** Test Do Sign up started **********
+2023-03-04 22:19:52,740 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="a8bdb098-1e55-4329-9b34-7e1c74d569b7")> in focus now
+2023-03-04 22:19:52,777 - Element_Operations.py:[504] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="a8bdb098-1e55-4329-9b34-7e1c74d569b7")> moved to element
+2023-03-04 22:19:59,652 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="a5780f1b-15cc-45be-bcf5-15d8536add53")> in focus now
+2023-03-04 22:20:02,883 - Element_Operations.py:[57] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="a5780f1b-15cc-45be-bcf5-15d8536add53")> clicked successfully
+2023-03-04 22:20:03,177 - Driver_Operations.py:[75] - [INFO] - Window full screened successfully
+2023-03-04 22:20:03,205 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="add862e5-0bf2-445b-90c3-e4937dc0c18d")> in focus now
+2023-03-04 22:20:03,789 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="add862e5-0bf2-445b-90c3-e4937dc0c18d")> element input value is Rahul
+2023-03-04 22:20:04,896 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="3a83f9c8-1813-41c4-b9ed-ff6a46073678")> in focus now
+2023-03-04 22:20:04,944 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="3a83f9c8-1813-41c4-b9ed-ff6a46073678")> element input value is 2123456789.0
+2023-03-04 22:20:04,970 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="e2ac257f-df3f-4478-a849-0dc7686581eb")> in focus now
+2023-03-04 22:20:05,033 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="e2ac257f-df3f-4478-a849-0dc7686581eb")> element input value is Keshav@asdf.com
+2023-03-04 22:20:05,069 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="7fd9ed25-6e3e-4f69-b6fb-05f9e8b4a253")> in focus now
+2023-03-04 22:20:05,128 - Element_Operations.py:[103] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="7fd9ed25-6e3e-4f69-b6fb-05f9e8b4a253")> dropdown selected successfully via value
+2023-03-04 22:20:05,147 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="1b320792-568b-44b1-b163-f222482d62d6")> in focus now
+2023-03-04 22:20:05,204 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="1b320792-568b-44b1-b163-f222482d62d6")> element input value is Delhi
+2023-03-04 22:20:05,225 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="65b447c0-6f95-44ea-a659-dd82a3561f40")> in focus now
+2023-03-04 22:20:05,302 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="65b447c0-6f95-44ea-a659-dd82a3561f40")> element input value is Keshav
+2023-03-04 22:20:05,321 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="9fdd41c7-4348-41bc-bde6-70cdae8c6923")> in focus now
+2023-03-04 22:20:05,353 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0696ae5ab91a0c6fc74db7e8f5f5d23d", element="9fdd41c7-4348-41bc-bde6-70cdae8c6923")> element input value is asdf1234
+2023-03-04 22:20:05,353 - test_Dummy_Registration.py:[25] - [INFO] - ********** Test Do Sign up successfully executed **********
+2023-03-04 22:20:05,424 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:20:08,273 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:20:08,274 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:20:08,278 - test_Dummy_Registration.py:[22] - [INFO] - ********** Test Do Sign up started **********
+2023-03-04 22:20:08,836 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="96a30bb8-e648-4d0e-bcf4-0b3796076663")> in focus now
+2023-03-04 22:20:08,839 - Element_Operations.py:[504] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="96a30bb8-e648-4d0e-bcf4-0b3796076663")> moved to element
+2023-03-04 22:20:15,740 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="0a8ab75c-c905-48a2-979b-9a683564f0d2")> in focus now
+2023-03-04 22:20:20,193 - Element_Operations.py:[57] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="0a8ab75c-c905-48a2-979b-9a683564f0d2")> clicked successfully
+2023-03-04 22:20:20,365 - Driver_Operations.py:[75] - [INFO] - Window full screened successfully
+2023-03-04 22:20:20,392 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="937cb8fb-ecfb-401b-88a6-2227467cdb57")> in focus now
+2023-03-04 22:20:20,819 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="937cb8fb-ecfb-401b-88a6-2227467cdb57")> element input value is Arun
+2023-03-04 22:20:20,855 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="7a32f76d-6f41-4e60-a923-547f6e120f35")> in focus now
+2023-03-04 22:20:21,024 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="7a32f76d-6f41-4e60-a923-547f6e120f35")> element input value is 3123456789.0
+2023-03-04 22:20:21,134 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="e93f909c-0a66-4b91-a00e-effbb1b75d7e")> in focus now
+2023-03-04 22:20:21,349 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="e93f909c-0a66-4b91-a00e-effbb1b75d7e")> element input value is Keshav@asdf.com
+2023-03-04 22:20:21,373 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="c356d5b2-2b6b-4d95-a2d6-29ab0a399335")> in focus now
+2023-03-04 22:20:21,413 - Element_Operations.py:[103] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="c356d5b2-2b6b-4d95-a2d6-29ab0a399335")> dropdown selected successfully via value
+2023-03-04 22:20:21,486 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="1125eac4-7644-43f7-8db3-8cf06bad7111")> in focus now
+2023-03-04 22:20:21,518 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="1125eac4-7644-43f7-8db3-8cf06bad7111")> element input value is Delhi
+2023-03-04 22:20:21,995 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="ee92833d-fc75-4c9a-9476-20ecbc5052f1")> in focus now
+2023-03-04 22:20:22,032 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="ee92833d-fc75-4c9a-9476-20ecbc5052f1")> element input value is Keshav
+2023-03-04 22:20:22,053 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="13f08d9d-fbba-4c07-a3eb-ab63f179e32f")> in focus now
+2023-03-04 22:20:22,094 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f29b57fd1a533a94355e31ef3b248a26", element="13f08d9d-fbba-4c07-a3eb-ab63f179e32f")> element input value is asdf1234
+2023-03-04 22:20:22,094 - test_Dummy_Registration.py:[25] - [INFO] - ********** Test Do Sign up successfully executed **********
+2023-03-04 22:20:22,167 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:20:24,914 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:20:24,916 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:20:24,920 - test_Dummy_Registration.py:[22] - [INFO] - ********** Test Do Sign up started **********
+2023-03-04 22:20:25,532 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="3ae7a7f1-2bb8-4534-aa4d-8c41cb7be4e8")> in focus now
+2023-03-04 22:20:25,539 - Element_Operations.py:[504] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="3ae7a7f1-2bb8-4534-aa4d-8c41cb7be4e8")> moved to element
+2023-03-04 22:20:32,383 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="890cea94-4f93-441d-b2a2-b34768d9f0b3")> in focus now
+2023-03-04 22:20:35,734 - Element_Operations.py:[57] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="890cea94-4f93-441d-b2a2-b34768d9f0b3")> clicked successfully
+2023-03-04 22:20:35,964 - Driver_Operations.py:[75] - [INFO] - Window full screened successfully
+2023-03-04 22:20:35,994 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="fe9794b4-680d-4cb7-bb22-f86b92e863cb")> in focus now
+2023-03-04 22:20:36,411 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="fe9794b4-680d-4cb7-bb22-f86b92e863cb")> element input value is Mukul
+2023-03-04 22:20:37,025 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="28006459-91ce-45ea-b14c-707420aa777e")> in focus now
+2023-03-04 22:20:37,127 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="28006459-91ce-45ea-b14c-707420aa777e")> element input value is 4123456789.0
+2023-03-04 22:20:37,150 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="0c8db665-129c-41f4-9e47-aa398248ba73")> in focus now
+2023-03-04 22:20:37,256 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="0c8db665-129c-41f4-9e47-aa398248ba73")> element input value is Keshav@asdf.com
+2023-03-04 22:20:37,279 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="5982f44d-88e8-4771-a06c-df780ce1f9cc")> in focus now
+2023-03-04 22:20:37,314 - Element_Operations.py:[103] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="5982f44d-88e8-4771-a06c-df780ce1f9cc")> dropdown selected successfully via value
+2023-03-04 22:20:37,336 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="6581f1e1-a1d2-4540-a92d-d2b354b9c6c8")> in focus now
+2023-03-04 22:20:37,375 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="6581f1e1-a1d2-4540-a92d-d2b354b9c6c8")> element input value is Delhi
+2023-03-04 22:20:37,411 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="ac5154fb-6616-48a7-ba6b-a7aa19293e19")> in focus now
+2023-03-04 22:20:37,459 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="ac5154fb-6616-48a7-ba6b-a7aa19293e19")> element input value is Keshav
+2023-03-04 22:20:37,480 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="d5504a9d-9e01-4a5b-adae-4247fba00691")> in focus now
+2023-03-04 22:20:37,519 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="d6988c4225f60d45212544c20537eef9", element="d5504a9d-9e01-4a5b-adae-4247fba00691")> element input value is asdf1234
+2023-03-04 22:20:37,519 - test_Dummy_Registration.py:[25] - [INFO] - ********** Test Do Sign up successfully executed **********
+2023-03-04 22:20:37,590 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:20:41,382 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:20:41,413 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:20:41,416 - test_Dummy_Registration.py:[22] - [INFO] - ********** Test Do Sign up started **********
+2023-03-04 22:20:41,485 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="62a57af6-6a81-5340-a735-06689eab30a9")> in focus now
+2023-03-04 22:20:41,492 - Element_Operations.py:[504] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="62a57af6-6a81-5340-a735-06689eab30a9")> moved to element
+2023-03-04 22:20:41,996 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="d696c818-0fd0-7543-a8a6-264099d3a687")> in focus now
+2023-03-04 22:20:42,729 - Element_Operations.py:[57] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="d696c818-0fd0-7543-a8a6-264099d3a687")> clicked successfully
+2023-03-04 22:20:43,004 - Driver_Operations.py:[75] - [INFO] - Window full screened successfully
+2023-03-04 22:20:43,024 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="c0a4ff4d-c891-d54d-952c-8f74812562a8")> in focus now
+2023-03-04 22:20:43,048 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="c0a4ff4d-c891-d54d-952c-8f74812562a8")> element input value is Keshav
+2023-03-04 22:20:43,063 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="34400da6-38b4-e448-bec9-a1a52bb7da11")> in focus now
+2023-03-04 22:20:43,076 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="34400da6-38b4-e448-bec9-a1a52bb7da11")> element input value is 1123456789.0
+2023-03-04 22:20:43,093 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="e461d637-1b90-2043-8ece-47b8af438c42")> in focus now
+2023-03-04 22:20:43,108 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="e461d637-1b90-2043-8ece-47b8af438c42")> element input value is Keshav@asdf.com
+2023-03-04 22:20:43,127 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="8b3de978-57cd-3642-92c3-5ad80facb333")> in focus now
+2023-03-04 22:20:43,152 - Element_Operations.py:[103] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="8b3de978-57cd-3642-92c3-5ad80facb333")> dropdown selected successfully via value
+2023-03-04 22:20:43,169 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="9d025951-f8f5-9549-ac0d-464989e97496")> in focus now
+2023-03-04 22:20:43,178 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="9d025951-f8f5-9549-ac0d-464989e97496")> element input value is Delhi
+2023-03-04 22:20:43,202 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="4bd726b1-9393-e04c-865a-9307b53320af")> in focus now
+2023-03-04 22:20:43,212 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="4bd726b1-9393-e04c-865a-9307b53320af")> element input value is Keshav
+2023-03-04 22:20:43,230 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="0634e277-d4b1-3c42-b02a-de5a366748be")> in focus now
+2023-03-04 22:20:43,237 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b57ae33e-b476-d949-98f4-9c26baf9664c", element="0634e277-d4b1-3c42-b02a-de5a366748be")> element input value is asdf1234
+2023-03-04 22:20:43,237 - test_Dummy_Registration.py:[25] - [INFO] - ********** Test Do Sign up successfully executed **********
+2023-03-04 22:20:43,663 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:20:46,924 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:20:46,942 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:20:46,945 - test_Dummy_Registration.py:[22] - [INFO] - ********** Test Do Sign up started **********
+2023-03-04 22:20:47,008 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="a4a0314d-67f9-e848-9a6f-c4469f8f890c")> in focus now
+2023-03-04 22:20:47,017 - Element_Operations.py:[504] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="a4a0314d-67f9-e848-9a6f-c4469f8f890c")> moved to element
+2023-03-04 22:20:47,515 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="f8abf090-6a2b-504a-8087-a1cf0b8e2062")> in focus now
+2023-03-04 22:20:48,071 - Element_Operations.py:[57] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="f8abf090-6a2b-504a-8087-a1cf0b8e2062")> clicked successfully
+2023-03-04 22:20:48,344 - Driver_Operations.py:[75] - [INFO] - Window full screened successfully
+2023-03-04 22:20:48,364 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="104c24e9-1e42-0c4f-9d69-e90efd29a5b4")> in focus now
+2023-03-04 22:20:48,377 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="104c24e9-1e42-0c4f-9d69-e90efd29a5b4")> element input value is Rahul
+2023-03-04 22:20:48,393 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="f7452832-e9cb-6049-8254-bd1155d460a0")> in focus now
+2023-03-04 22:20:48,404 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="f7452832-e9cb-6049-8254-bd1155d460a0")> element input value is 2123456789.0
+2023-03-04 22:20:48,420 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="3cd3ccb8-0138-614a-a564-1ce7f9cef549")> in focus now
+2023-03-04 22:20:48,428 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="3cd3ccb8-0138-614a-a564-1ce7f9cef549")> element input value is Keshav@asdf.com
+2023-03-04 22:20:48,449 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="a78a88de-8f22-ff47-b85a-3c5df161a5f3")> in focus now
+2023-03-04 22:20:48,466 - Element_Operations.py:[103] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="a78a88de-8f22-ff47-b85a-3c5df161a5f3")> dropdown selected successfully via value
+2023-03-04 22:20:48,499 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="c5479501-bc31-ca4c-a997-3e6974a24509")> in focus now
+2023-03-04 22:20:48,507 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="c5479501-bc31-ca4c-a997-3e6974a24509")> element input value is Delhi
+2023-03-04 22:20:48,525 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="99282f46-92c8-7c43-bf2d-04082caa2f61")> in focus now
+2023-03-04 22:20:48,542 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="99282f46-92c8-7c43-bf2d-04082caa2f61")> element input value is Keshav
+2023-03-04 22:20:48,563 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="e7937bce-8681-9c4a-99f8-e7ee7265df99")> in focus now
+2023-03-04 22:20:48,572 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="3988790c-7ff1-6b40-8315-8218bc5388b3", element="e7937bce-8681-9c4a-99f8-e7ee7265df99")> element input value is asdf1234
+2023-03-04 22:20:48,572 - test_Dummy_Registration.py:[25] - [INFO] - ********** Test Do Sign up successfully executed **********
+2023-03-04 22:20:48,892 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:20:51,935 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:20:51,972 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:20:51,975 - test_Dummy_Registration.py:[22] - [INFO] - ********** Test Do Sign up started **********
+2023-03-04 22:20:52,129 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="0183d5e2-a35d-204b-a76a-6cf05ab31741")> in focus now
+2023-03-04 22:20:52,134 - Element_Operations.py:[504] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="0183d5e2-a35d-204b-a76a-6cf05ab31741")> moved to element
+2023-03-04 22:20:52,570 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="9d3b944c-2383-be4a-ab64-d953af46f147")> in focus now
+2023-03-04 22:20:53,193 - Element_Operations.py:[57] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="9d3b944c-2383-be4a-ab64-d953af46f147")> clicked successfully
+2023-03-04 22:20:53,462 - Driver_Operations.py:[75] - [INFO] - Window full screened successfully
+2023-03-04 22:20:53,486 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="04c468bf-8539-7c40-b2c4-4fdfebf1890f")> in focus now
+2023-03-04 22:20:53,499 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="04c468bf-8539-7c40-b2c4-4fdfebf1890f")> element input value is Arun
+2023-03-04 22:20:53,516 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="b4c5bdf2-0a00-c146-82e8-dbb5164f6db8")> in focus now
+2023-03-04 22:20:53,527 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="b4c5bdf2-0a00-c146-82e8-dbb5164f6db8")> element input value is 3123456789.0
+2023-03-04 22:20:53,543 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="e0028981-7350-f649-a5bd-a0ad875476fd")> in focus now
+2023-03-04 22:20:53,554 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="e0028981-7350-f649-a5bd-a0ad875476fd")> element input value is Keshav@asdf.com
+2023-03-04 22:20:53,571 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="88014791-c1a1-b548-a7bd-645ff918b11a")> in focus now
+2023-03-04 22:20:53,584 - Element_Operations.py:[103] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="88014791-c1a1-b548-a7bd-645ff918b11a")> dropdown selected successfully via value
+2023-03-04 22:20:53,607 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="d7885e54-04d2-2d41-9821-5a8b937e8e3d")> in focus now
+2023-03-04 22:20:53,619 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="d7885e54-04d2-2d41-9821-5a8b937e8e3d")> element input value is Delhi
+2023-03-04 22:20:53,635 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="9a16ac10-3a5e-ee41-ba59-5f2adeedee94")> in focus now
+2023-03-04 22:20:53,644 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="9a16ac10-3a5e-ee41-ba59-5f2adeedee94")> element input value is Keshav
+2023-03-04 22:20:53,660 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="6c9dfd32-7744-044f-b00c-9cb6ca999c71")> in focus now
+2023-03-04 22:20:53,671 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="73c96e47-a92d-f74d-8b33-733d561eb926", element="6c9dfd32-7744-044f-b00c-9cb6ca999c71")> element input value is asdf1234
+2023-03-04 22:20:53,671 - test_Dummy_Registration.py:[25] - [INFO] - ********** Test Do Sign up successfully executed **********
+2023-03-04 22:20:54,101 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:20:57,215 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:20:57,217 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:20:57,221 - test_Dummy_Registration.py:[22] - [INFO] - ********** Test Do Sign up started **********
+2023-03-04 22:20:57,327 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="2eae493b-44c7-1140-ba21-14a759d0c006")> in focus now
+2023-03-04 22:20:57,350 - Element_Operations.py:[504] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="2eae493b-44c7-1140-ba21-14a759d0c006")> moved to element
+2023-03-04 22:20:57,778 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="39341339-15aa-fb45-aa6e-5fb94eb1332b")> in focus now
+2023-03-04 22:20:58,346 - Element_Operations.py:[57] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="39341339-15aa-fb45-aa6e-5fb94eb1332b")> clicked successfully
+2023-03-04 22:20:58,620 - Driver_Operations.py:[75] - [INFO] - Window full screened successfully
+2023-03-04 22:20:58,640 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="ea898239-3d47-9d4a-857a-11711fa84a4b")> in focus now
+2023-03-04 22:20:58,653 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="ea898239-3d47-9d4a-857a-11711fa84a4b")> element input value is Mukul
+2023-03-04 22:20:58,668 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="83ebae0f-f08e-054f-88bb-56c995b58f4b")> in focus now
+2023-03-04 22:20:58,679 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="83ebae0f-f08e-054f-88bb-56c995b58f4b")> element input value is 4123456789.0
+2023-03-04 22:20:58,695 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="2776ad2f-0b6b-b844-a9de-9dfb142953b0")> in focus now
+2023-03-04 22:20:58,705 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="2776ad2f-0b6b-b844-a9de-9dfb142953b0")> element input value is Keshav@asdf.com
+2023-03-04 22:20:58,722 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="009a99dc-e7a6-5247-a8cb-88f3133a90df")> in focus now
+2023-03-04 22:20:58,738 - Element_Operations.py:[103] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="009a99dc-e7a6-5247-a8cb-88f3133a90df")> dropdown selected successfully via value
+2023-03-04 22:20:58,753 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="0df6c39f-532e-da4a-af47-a1b496622df5")> in focus now
+2023-03-04 22:20:58,767 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="0df6c39f-532e-da4a-af47-a1b496622df5")> element input value is Delhi
+2023-03-04 22:20:58,785 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="788af2d8-dc16-904e-9762-7f51ea942757")> in focus now
+2023-03-04 22:20:58,796 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="788af2d8-dc16-904e-9762-7f51ea942757")> element input value is Keshav
+2023-03-04 22:20:58,812 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="e7ecbe6e-e684-c944-8697-c6bfbe53906c")> in focus now
+2023-03-04 22:20:58,824 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="b9466e49-2bc7-c141-96f9-50027deab209", element="e7ecbe6e-e684-c944-8697-c6bfbe53906c")> element input value is asdf1234
+2023-03-04 22:20:58,824 - test_Dummy_Registration.py:[25] - [INFO] - ********** Test Do Sign up successfully executed **********
+2023-03-04 22:20:59,246 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:29:00,657 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:29:00,661 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:29:00,667 - test_Dummy_Registration.py:[22] - [INFO] - ********** Test Do Sign up started **********
+2023-03-04 22:29:01,260 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="1490241e-e60b-4314-8af8-39c67389bb75")> in focus now
+2023-03-04 22:29:01,265 - Element_Operations.py:[504] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="1490241e-e60b-4314-8af8-39c67389bb75")> moved to element
+2023-03-04 22:29:07,714 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="a5095d79-52e2-4ae7-8ed3-6459ed2da616")> in focus now
+2023-03-04 22:29:11,263 - Element_Operations.py:[57] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="a5095d79-52e2-4ae7-8ed3-6459ed2da616")> clicked successfully
+2023-03-04 22:29:11,442 - Driver_Operations.py:[75] - [INFO] - Window full screened successfully
+2023-03-04 22:29:11,474 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="8cb4a1bf-431b-4c0a-91a1-2c735cbe8104")> in focus now
+2023-03-04 22:29:11,932 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="8cb4a1bf-431b-4c0a-91a1-2c735cbe8104")> element input value is Keshav
+2023-03-04 22:29:11,981 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="f917efd5-9a7d-41ad-9d96-a871bb826253")> in focus now
+2023-03-04 22:29:12,065 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="f917efd5-9a7d-41ad-9d96-a871bb826253")> element input value is 1123456789.0
+2023-03-04 22:29:12,107 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="319f5e5c-af68-4099-8144-3a934bbf05a3")> in focus now
+2023-03-04 22:29:12,203 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="319f5e5c-af68-4099-8144-3a934bbf05a3")> element input value is Keshav@asdf.com
+2023-03-04 22:29:12,770 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="8c85ed9d-a62e-46b8-843e-9563efa869ed")> in focus now
+2023-03-04 22:29:12,808 - Element_Operations.py:[103] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="8c85ed9d-a62e-46b8-843e-9563efa869ed")> dropdown selected successfully via value
+2023-03-04 22:29:12,827 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="e673639d-42fd-474d-972a-3a857647822a")> in focus now
+2023-03-04 22:29:12,862 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="e673639d-42fd-474d-972a-3a857647822a")> element input value is Delhi
+2023-03-04 22:29:12,894 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="1bd62779-f54e-43ac-95c3-7725d5d69f7e")> in focus now
+2023-03-04 22:29:12,925 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="1bd62779-f54e-43ac-95c3-7725d5d69f7e")> element input value is Keshav
+2023-03-04 22:29:12,944 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="0ecc16b5-08cc-4c23-9887-563fc04a5346")> in focus now
+2023-03-04 22:29:12,979 - Element_Operations.py:[226] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="0e5bd3e19e4ecea16b4f340596869541", element="0ecc16b5-08cc-4c23-9887-563fc04a5346")> element input value is asdf1234
+2023-03-04 22:29:12,979 - test_Dummy_Registration.py:[25] - [INFO] - ********** Test Do Sign up successfully executed **********
+2023-03-04 22:29:13,051 - Driver_Operations.py:[39] - [INFO] - all windows closed successfully
+2023-03-04 22:29:15,861 - Driver_Operations.py:[260] - [INFO] - User Navigated to https://www.way2automation.com/
+2023-03-04 22:29:15,863 - Driver_Operations.py:[270] - [INFO] - Implicit wait set to 10
+2023-03-04 22:29:15,866 - test_Dummy_Registration.py:[22] - [INFO] - ********** Test Do Sign up started **********
+2023-03-04 22:29:16,404 - Element_Operations.py:[29] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f824b39ea45f91cacbb1d2db8aa91309", element="a6508d9b-22eb-4e3a-9673-1e62426ddf36")> in focus now
+2023-03-04 22:29:16,410 - Element_Operations.py:[504] - [INFO] - <selenium.webdriver.remote.webelement.WebElement (session="f824b39ea45f91cacbb1d2db8aa91309", element="a6508d9b-22eb-4e3a-9673-1e62426ddf36")> moved to element
