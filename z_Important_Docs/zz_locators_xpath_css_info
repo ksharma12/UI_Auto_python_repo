@@ -1,0 +1,162 @@
+8 MAJOR LOCATORS :--->
+----------------------
+id - static or dynamic
+name
+cssSelector
+xpath
+className
+tagNmae
+linkText
+partialLinkText
+----------------------
+plugins for xpath : Firepath , Firebug , chropath
+--------------------------------------------------
+	IN CHROME:-
+$x("") - xpath locator (relative , partial , absolute)
+
+-selenium is an api not an automation tool
+
+(relative xpath)
+
+# simple
+//tagName[@propertyName='stringValue']
+
+
+# finding element through text
+//tagName[text()='text_written']
+//tagName[contains(text(),'text_written')]
+
+* if there is space in the text then
+//tagName[normalize-space()='text_written']
+
+# multiple attributes
+//tagName[@propertyName='stringValue'][@propertyName_1='stringValue_1']....
+                                  OR
+//tagName[@propertyName='stringValue' and @propertyName_1='stringValue_1'] and ....
+//tagName[@propertyName='stringValue' or @propertyName_1='stringValue_1'] or ....
+
+
+# [1](//tagName[@propertyName='stringValue']) == [2](//tagName[@propertyName='stringValue'])
+//tagName[@propertyName='stringValue'][0]
+
+# if initial part is dynamic eg; (str)
+//tagName[@propertyName='stringValue']
+
+-- obselute the dynamic intitial part from the xpath
+//tagName[substring(@id,4)='ing_value']
+
+
+# if last part is dynamic eg; (alue)
+//tagName[@propertyName='stringValue']
+
+-- obselute the dynamic part and leave remaining  constant
+//tagName[starts-with(@propertyName,'string_v')]
+
+
+# if initial and last part is dynamic eg; (str) and (alue)
+//tagName[@propertyName='stringValue']
+
+--remove all dynamic part and keep the constant
+//tagName[contains(@propertyName,'ingV’]
+                      or
+//tagName[substring(@id,4,5)='ing_v']
+4 : index from which the substring starts.
+5 : integer value suggest number of characters hold upto.
+
+--now if more than 1 elements traced on the page concatenate 1 more attribute to form it unique
+//tagName[contains(@propertyName,'ing_v'][@propertyName_1='stringValue_1']....
+
+
+# if element doesn't have any unique property for being identified
+* finding preceding sibling(moving backward in dom tree)
+//tagName[@propertyName='stringValue']/preceding-sibling::tagName_1
+
+* finding following sibling(moving forward in dom tree)
+//tagName[@propertyName='stringValue']/following-sibling::tagName_1
+
+* finding parent tag
+//tagName[@propertyName='stringValue']/parent::parentTagName
+                        OR
+//tagName[@propertyName='stringValue']/..
+
+* finding ancestor
+
+
+*finding children
+//tagName[@propertyName='stringValue']/tagName
+//tagName[@propertyName='stringValue']/tagName[1] - first child
+//tagName[@propertyName='stringValue']/tagName[2] - second child
+//tagName[@propertyName='stringValue']/tagName[3] - third child
+
+
+(Absolute xpath)
+- always starts with html
+- all elements inside body
+//html/body/div/div[2]/div[2]/form/input[14]/.....
+
+(Partial xpath)
+- now we can start removing the path till the time it is working correctly
+//div/div[2]/div[2]/form/input[14]
+- still work check
+//div[2]/form/input[14]
+//input[14]
+
+
+CSS
+$$("") - css locator
+fast but forward only
+
+id = #id_value
+class = .class_name
+more specific : tagName.class_name
+how to uniquely identify : input.class_name[propertyName='value']
+
+$$("tagName.class_name")
+
+$$("tagName[propertyName='stringValue']")
+$$("tagName[propertyName='stringValue'][propertyName_1='stringValue_1']")
+
+starts-with :-
+$$("tagName[id^='partial_value']")
+
+ends-with :-
+$$("tagName[id$='partial_value']")
+
+contains :-
+$$("tagName[id*='partial_value']")
+
+moving forward (lower)tag :-
+$$("tagName.class_name") > tagName_1
+
+moving forward more :-
+$$("tagName.class_name > tagName_1 > tagname#id_value")
+
+moving to child tag :-
+$$("tagName.class_name > tagName_1 > tagname:first-child")
+$$("tagName.class_name > tagName_1 > tagname:last-child")
+$$("tagName.class_name > tagName_1 > tagname:nth-child(1)")
+
+
+css is faster than xpath
+xpath - we can move up and down in dom , css - we can only move forward in dom
+xpath - we can locate element using text in dom , css - we cannot locate element using text in dom
+
+CLEARING LOGS IN BROWSER CONSOLE - ctrl + l
+OPENING CONSOLE IN BROWSER - esc
+
+
+SELECTORS HUB :---->
+- simple inspect
+- set driver command to append on selectors
+- click to generate locators page and multiple selectors
+
+
+Handling webelements which disappear on inspecting :
+  1. go to sources tab in browser
+  2. locate the disappearing element
+  3. click of f8 for pausing the browser (web page in debugger mode)
+  4.
+
+
+
+

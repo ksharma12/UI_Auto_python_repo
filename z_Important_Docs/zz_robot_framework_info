@@ -1,0 +1,58 @@
+official documentation of Robot Framework :- https://robotframework.org/#resources
+tutorial : https://www.youtube.com/watch?v=qnA2P3VBkeA&list=PLL34mf651faORDOyJrk0E6k9FM-wKgfPV&index=2
+
+Steps to download Robot Framework :-
+- Download .jar file from path https://github.com/lte2000/intellibot/blob/master/intellibot.jar
+- [Go to setting] > [plugins] > [(gear)] > [download plugin from disk > select the .jar file] > restart ide
+- install pip install robotframework
+- check if robotframework installed via [robot --version]
+- download selenium browserdrivers for the browser
+
+For adding path of executable files in the .bash file of mac or .zprofile :
+cd homedir
+vi .bash_profile
+for saving file :wq!
+to see the path echo $PATH
+
+take executable and add it to c > python > scripts
+
+Every Robot framework file have 4 section :
+[ctrl + space] - to have these under written things appear
+Every robot file have these 4 sections
+*** Settings ***
+section dedicated to import, library
+[Library] :-
+ - to use any Library from robot framework we need to install the library first
+ - pip install robotframework-libraryName
+
+*** Variables ***
+There are 4 type of variables:
+1. scaler variable
+2. dictionary variable
+3. list variable
+
+about keywords and test cases - https://robotframework.org/SeleniumLibrary/
+selenium keywords documentation - https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html
+*** Keywords ***
+*** Test Cases ***
+----------------------------------------------------------------------ROBOT FRAMEWORK--------------------------------------------------------------------------------
+ctr + space >>>>>  underwritten 4 sections will appear to write in .robot file
+{*** Settings ***}
+{*** Keywords ***}
+{*** Variables ***}
+{*** test cases ***}
+
+to run the .robot file from cmd :--
+{robot .\name_of_file / robot .\{initials of letter and then press tab}]}
+{robot -v variable_name:variable_value .\{initials of letter and then press tab}]}
+{robot -d folder_name_where_logs_stay .\.robot_file} - this would add the log files to this folder not in the root
+
+To have executables with the robot framework we need to paste the .exe file in scripts in python39
+
+
+path of file always with :-
+1. single forward slash
+2. double backward slash
+ ex: C:\\Users\\User\\Desktop\\responsive_issue.png
+ ex: C:/Users/User/Desktop/responsive_issue.png
+

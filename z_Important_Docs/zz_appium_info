@@ -1,0 +1,41 @@
+                                         Appium
+IOS and Android :
+
+- Native Applications
+- Hybrid Applications (combination of native and web) apks.
+- Mobile Web
+
+https://appium.io/
+Download Appium desktop application
+
+preRequisites:-
+1. Python
+2. PvCharm
+3. JDK 1.8
+4. NodeJS
+5. Android Studio
+6. Appium GUI/ Desktop app
+7. Appium-Python-Client
+
+JDK Configuration :-
+- Open terminal
+- go to Users/Library/JavaVirtualMachines and delete
+- download jdk1.8 and set path in [open .zprofile]
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+export PATH=$PATH:JAVA_HOME/bin
+
+for checking nodejs installed on system
+node -v
+ANDROID STUDIO Configuration :-
+
+Android studio sdk : /Users/keshavsharma/Library/Android/sdk
+- setting up env variables
+
+export ANDROID_HOME=/Users/keshavsharma/Library/Android/sdk
+export PATH=$PATH:JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+Go to Terminal :
+adb devices
+
+press contrl + click on appium gui to launch it

@@ -1,3 +1,6 @@
+touch ~/.bash_profile; open ~/.bash_profile
+open .zprofile
+
 ---------------------------------------------------------------------------conftest.py--------------------------------------------------------------------------------------------------
 Your conftest.py is only available to test files in the same directory, or in nested directories below.
    tests/
@@ -12,7 +15,7 @@ Your conftest.py is only available to test files in the same directory, or in ne
 conf.ini file ::--- read multiple .ini files data together
 https://stackoverflow.com/questions/4029946/multiple-configuration-files-with-python-configparser
 
-NO Section Error for configparser arrise only due to config.ini file path
+NO Section Error for configparser arises only due to config.ini file path
 
 pip install -U selenium  ---> update selenium
 
@@ -72,6 +75,8 @@ is possible via selenium grid
 
 ----------------------------------------PyTest---------------------------------------------------------------
 pytest documentation ::-->> [https://docs.pytest.org/en/7.2.x/]
+
+
 https://www.youtube.com/watch?v=snDSB9b8v_E - pytest tutorial
 
 Likewise, you can have other conftest.py files in subdirectories of the top tests directory.
@@ -248,10 +253,6 @@ https://www.youtube.com/watch?v=dxvnbKaszBw&ab_channel=BiggiDroid
 
 mac ==> command + shift + g (to find .ssh key)
 
-Push project from local to git :
-git pull --rebase
-git push
-
 Notepad++ regix :-
 105164 25   >>>>>> 105164_0025
 [ ]([0-9]+) to _$1   --do your first replace
@@ -275,15 +276,15 @@ Jenkins 2.346. 3 is the most recent Jenkins LTS. It supports Java 8.
 7. Login with Jenkins Credentials username/password
 8. Navigate to "Manage Jenkins" > Install some plugins > tab "Available" and search for
    a. allure
-   b. shinningpanda
+   b. shinningpanda - support venv , pytest , plugin support
 9. cntrl + c to top jenkins
 
 help video : https://www.youtube.com/watch?v=1aXKLIbKOp4&ab_channel=Mukeshotwani
 
-
 for local it is localhost:8080 but instead company would provide us the url like  "jenkins.com.companyName..."
 username
 password
+
 For Khamilia-softwares
 jenkins key : 85c582c8461748d0ae2b0e0e467bb070
 http://localhost:8080/
@@ -291,17 +292,9 @@ username - keshav
 comminity saved password and notifications
 https://community.jenkins.io/
 
--------------------------------------way2Automation-----------------------------------------------------
-Way2Automation
-Please find the link to access the enrolled courses:
-http://www.way2automation.com/
-Go to Member Login
-Username: keshavsharma.tu@gmail.com
-Password: Way2Automation
-Go to "My Courses" to see the courses you are enrolled in.
-
 --------------------------------------------------------------------Cucumber--------------------------------------------------------------------------------------------------------
 python behave documentation : [https://behave.readthedocs.io/en/stable/]
+
 eg:
 Feature: Search Feature
   Scenario: validating the search feature
@@ -350,6 +343,12 @@ https://stackoverflow.com/questions/41960081/how-to-send-an-email-of-allure-repo
 
 ----------------------------------------------------------------------------------APIs-------------------------------------------------------------------------------
 [requests Documentation] -----::>> [https://requests.readthedocs.io/en/latest/]
+
+Unlike Basic Auth, where you have to share your password with people who need to access your user account,
+OAuth doesn't share password data. Instead,
+OAuth uses authorization tokens to verify an identity between consumers and service providers.
+
+for json schema validation - https://pynative.com/python-json-validation/
 
 [view json objects] ---> http://jsonviewer.stack.hu/
 [apis for testing purpose] ---> https://reqres.in/
@@ -405,3 +404,50 @@ Authentication tokens
 Secret keys
 Bio-metrics and many other ways
 
+-------------------------------------------CMD Commands---------------------------------------------------------------------------------------------------------
+- Copy 1 file from a location to another location in windows
+cd source.path
+copy file.asdf destination.path
+
+------------------------------------------- APPIUM --------------------------------------------------------------------------------------------------------------------
+                                         Appium
+IOS and Android :
+
+- Native Applications
+- Hybrid Applications (combination of native and web) apks.
+- Mobile Web
+
+https://appium.io/
+Download Appium desktop application
+
+preRequisites:-
+1. Python
+2. PvCharm
+3. JDK 1.8
+4. NodeJS
+5. Android Studio
+6. Appium GUI/ Desktop app
+7. Appium-Python-Client
+
+JDK Configuration :-
+- Open terminal
+- go to Users/Library/JavaVirtualMachines and delete
+- download jdk1.8 and set path in [open .zprofile]
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+export PATH=$PATH:JAVA_HOME/bin
+
+for checking nodejs installed on system
+node -v
+ANDROID STUDIO Configuration :-
+
+Android studio sdk : /Users/keshavsharma/Library/Android/sdk
+- setting up env variables
+
+export ANDROID_HOME=/Users/keshavsharma/Library/Android/sdk
+export PATH=$PATH:JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+Go to Terminal :
+adb devices
+
+press contrl + click on appium gui to launch it
