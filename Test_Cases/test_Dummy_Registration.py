@@ -23,6 +23,7 @@ class Test_Dummy_Registration(BaseTest):
         home.moving_to_Dummy_Registration_Page()
         dummy_reg.fill_registration_form(name, phoneNum, email, country, city, username, password)
         log.logger.info("********** Test Do Sign up successfully executed **********")
+        log.logger.info("********** Test Do Sign up successfully executed **********")
 
 
 
